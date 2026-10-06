@@ -97,29 +97,28 @@ export const masterclass = {
 };
 
 export const confirm = {
-  eyebrow: "You’re registered",
-  title: "Your Spot Is Confirmed!",
-  subtitle: "Complete the 3 steps below so you don’t miss the live training.",
-  steps: [
-    {
-      title: "Add it to your calendar",
-      body: "Lock the time in now. Most people who miss the live training simply forgot.",
-    },
-    {
-      title: "Check your inbox",
-      body: "Your private access link is on its way. If you can’t see it, check spam or promotions and mark it as safe.",
-    },
-    {
-      title: "Show up live, 5 minutes early",
-      body: "Live attendees get the full Q&A and bonuses that won’t be in any replay.",
-    },
+  pill: "🎉 You’ve Successfully Secured Your Seat for the Live Webinar",
+  sub: "You don’t need to show your face, have previous experience, or be a tech expert to get started.",
+  scarcity: "🔥 Limited seats available",
+  badge: "✅ Seat confirmed",
+  cardHeading: "Check Your Email Now",
+  cardBody: [
+    "Your webinar link has been sent straight to your email, not this page.",
+    "Open your inbox, find the confirmation email, and save it somewhere you’ll see it again at your scheduled time.",
   ],
-  joinCta: "Click Here to Join the Live Training",
-  prepHeading: "Before the training",
-  prep: [
-    "Have a notebook ready. You’ll want to take notes.",
-    "Join on a laptop if you can, so you can see the screen clearly.",
-    "Write down your biggest question about faceless YouTube for the Q&A.",
-    "Find a quiet spot and give yourself the full session.",
+  prompt: "👉 Click the button below to confirm you’ve seen this page",
+  button: "I’ve Seen This, Confirm",
+  closeNote: "You can safely close this page now. Your link to join the training is waiting in your email.",
+  confirmedHeading: "You’re all set! 🎉",
+  confirmedBody: "See you live. Keep an eye on your inbox for your joining link and reminders.",
+  importantHeading: "⚠️ Important",
+  importantLead: "Please make sure you check your email inbox after registering.",
+  importantIf: "If you don’t see the email immediately:",
+  importantList: [
+    "Check your Spam/Junk folder",
+    "Check your Promotions/Updates folder",
+    // Match this to the subject line of the WebinarJam confirmation email.
+    "Search your inbox for “Faceless YouTube Live Training”",
   ],
+  importantOutro: "Save your scheduled webinar time to your calendar so you don’t miss it.",
 };

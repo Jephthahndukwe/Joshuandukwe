@@ -1,71 +1,50 @@
 import type { Metadata } from "next";
-import { AddToCalendar } from "@/components/AddToCalendar";
 import { Disclaimer } from "@/components/Chrome";
-import { Countdown } from "@/components/Countdown";
-import { brand, confirm as c } from "@/lib/content";
-import { eventFromSearchParams } from "@/lib/webinar";
+import { SeenConfirm } from "@/components/SeenConfirm";
+import { confirm as c, masterclass } from "@/lib/content";
 
-export const metadata: Metadata = { title: "You’re Registered", robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: "Seat Confirmed", robots: { index: false, follow: false } };
 
-export default async function ConfirmPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
-  const event = eventFromSearchParams(await searchParams);
-
+export default function ConfirmPage() {
   return (
-    <main className="mx-auto max-w-5xl px-4 pt-10 sm:px-6 sm:pt-20">
-      <section className="bg-night px-5 py-10 text-center sm:px-10 sm:py-14">
-        <p className="mx-auto inline-block rounded-full bg-accent px-6 py-2.5 font-serif text-base font-bold text-night sm:text-lg">{c.eyebrow} ✓</p>
-        <h1 className="mt-6 font-sans text-4xl font-extrabold tracking-tight text-white sm:text-5xl">{c.title}</h1>
-        <p className="mt-4 text-lg italic text-white/85 sm:text-xl">{c.subtitle}</p>
+    <main className="mx-auto max-w-5xl px-4 pt-6 sm:px-6 sm:pt-12">
+      <section className="hero-glow relative overflow-hidden rounded-3xl px-5 pb-12 pt-10 text-center text-white sm:px-12 sm:pb-16 sm:pt-14">
+        <div className="dots pointer-events-none absolute inset-0" />
+        <div className="relative">
+          <p className="mx-auto inline-block rounded-full bg-accent px-5 py-3 font-sans text-sm font-bold text-night shadow-lg shadow-accent/20 sm:px-8 sm:text-lg">{c.pill}</p>
+          <h1 className="mx-auto mt-8 max-w-4xl font-sans text-3xl font-extrabold leading-[1.15] tracking-tight sm:text-5xl">
+            {masterclass.headlineBefore}
+            <span className="text-accent">{masterclass.headlineHighlight}</span>
+            {masterclass.headlineAfter}
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/85 sm:text-xl">{c.sub}</p>
+          <p className="mt-8 font-sans text-lg font-extrabold uppercase tracking-wide text-cta">{c.scarcity}</p>
 
-        <div className="mx-auto mt-8 max-w-xl rounded border border-white/40 px-5 py-6 text-white">
-          <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-accent">Faceless YouTube Live Training with {brand.host}</p>
-          <p className="mt-3 font-sans text-2xl font-bold">{event.date}</p>
-          <p className="text-white/80">{event.time} {event.tzLabel}</p>
-          <div className="mt-5 rounded bg-paper px-3 py-4"><Countdown target={event.startMs} /></div>
+          {/* Main card */}
+          <div className="mx-auto mt-8 max-w-3xl rounded-3xl bg-night-2 p-2 ring-1 ring-white/10">
+            <div className="rounded-[1.25rem] border-2 border-accent bg-paper px-5 py-10 text-body sm:px-12">
+              <p className="inline-block rounded-full bg-cta px-5 py-2 font-sans text-sm font-bold uppercase tracking-wide text-white">{c.badge}</p>
+              <h2 className="mt-5 font-sans text-3xl font-extrabold tracking-tight">{c.cardHeading}</h2>
+              <div className="mt-5 space-y-4 text-lg leading-relaxed text-soft">
+                {c.cardBody.map((p) => <p key={p}>{p}</p>)}
+              </div>
+              <SeenConfirm />
+              <p className="mt-5 text-lg leading-relaxed text-soft">{c.closeNote}</p>
+            </div>
+          </div>
+
+          {/* Important */}
+          <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-white/10 bg-white/[0.04] px-6 py-8 text-left sm:px-10">
+            <p className="text-center font-sans text-xl font-extrabold uppercase tracking-wide text-accent">{c.importantHeading}</p>
+            <p className="mt-6 text-lg leading-relaxed text-white/90">{c.importantLead}</p>
+            <p className="mt-4 text-lg text-white/90">{c.importantIf}</p>
+            <ul className="mt-3 list-disc space-y-2 pl-7 text-lg text-white/90 marker:text-accent">
+              {c.importantList.map((i) => <li key={i}>{i}</li>)}
+            </ul>
+            <p className="mt-5 text-lg leading-relaxed text-white/90">{c.importantOutro}</p>
+          </div>
         </div>
       </section>
-
-      <div className="mx-auto max-w-[57rem]">
-        {event.roomUrl && (
-          <div className="my-12 text-center">
-            <a href={event.roomUrl} target="_blank" rel="noopener noreferrer" className="btn-cta w-full sm:w-auto">{c.joinCta}</a>
-            <p className="mt-4 break-all font-sans text-sm text-soft">
-              Your personal link: <a href={event.roomUrl} className="underline underline-offset-4 hover:text-body">{event.roomUrl}</a>
-            </p>
-            {event.roomPassword && <p className="mt-1 font-sans text-sm text-soft">Room password: <span className="font-mono text-body">{event.roomPassword}</span></p>}
-          </div>
-        )}
-
-        <ol className="space-y-4">
-          {c.steps.map((s, i) => (
-            <li key={s.title} className="flex gap-4 border-l-4 border-accent bg-paper-2 px-5 py-5 sm:px-6">
-              <span className="grid size-9 shrink-0 place-items-center rounded-full bg-cta font-sans font-bold text-white">{i + 1}</span>
-              <div className="flex-1">
-                <h2 className="text-xl font-bold">{s.title}</h2>
-                <p className="mt-1 text-lg leading-relaxed text-soft">{s.body}</p>
-                {i === 0 && <div className="mt-4"><AddToCalendar startMs={event.startMs} roomUrl={event.roomUrl} /></div>}
-              </div>
-            </li>
-          ))}
-        </ol>
-
-        <section className="mt-12 bg-night-2 px-5 py-10 sm:px-10">
-          <h2 className="text-center font-sans text-2xl font-extrabold tracking-tight text-white sm:text-3xl">{c.prepHeading}</h2>
-          <ul className="mt-6 space-y-4">
-            {c.prep.map((p) => (
-              <li key={p} className="flex gap-3 text-lg leading-relaxed text-white/90">
-                <span className="mt-0.5 text-accent" aria-hidden>✓</span>{p}
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {brand.supportEmail && (
-          <p className="mt-10 text-center text-lg text-soft">
-            Questions? Email <a href={`mailto:${brand.supportEmail}`} className="font-bold text-body underline underline-offset-4">{brand.supportEmail}</a>
-          </p>
-        )}
-      </div>
 
       <Disclaimer />
     </main>

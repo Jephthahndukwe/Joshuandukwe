@@ -5,7 +5,7 @@ Two-step webinar funnel built with Next.js (App Router), TypeScript and Tailwind
 | Route | Purpose |
 | --- | --- |
 | `/youtube-masterclass` | Registration page inspired by the original masterclass page: hero, learning list, not-for-everyone section, popup opt-in form and sticky "Live Training Starting Soon" countdown bar |
-| `/confirm` | Thank-you page. Reads the WebinarJam `wj_*` query params (live room link, timestamp, timezone, date/time labels) and shows countdown, join button, add-to-calendar (Google, Apple/ICS, Outlook) and prep steps |
+| `/confirm` | Success page: seat-confirmed message telling people their joining link is in their email, an "I've Seen This, Confirm" button and inbox tips. Works as WebinarJam's thank-you page URL |
 | `/api/register` | Validates the lead, registers it with WebinarJam, then redirects to `/confirm` with WebinarJam-format params |
 | `/` | Redirects to `/youtube-masterclass` |
 
