@@ -34,6 +34,7 @@ export const urgency = {
 };
 
 export const masterclass = {
+  topBadge: "Free live online training",
   pill: "Making Money Online Doesn’t Have To Be This Complicated",
   headlineBefore: "How Everyday Nigerians Are Quietly Building Faceless YouTube Channels That Can Generate Over ",
   headlineHighlight: "$1,000 to $5,000+",

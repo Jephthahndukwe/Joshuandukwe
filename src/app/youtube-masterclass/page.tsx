@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Disclaimer } from "@/components/Chrome";
 import { EvergreenCountdown } from "@/components/Countdown";
 import { RegisterButton, RegisterModal } from "@/components/Register";
-import { brand, masterclass as c, urgency } from "@/lib/content";
+import { masterclass as c, urgency } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Free Faceless YouTube Training" };
 
@@ -31,9 +31,11 @@ export default function MasterclassPage() {
       <header className="hero-glow relative overflow-hidden text-white">
         <div className="dots pointer-events-none absolute inset-0" />
         <div className="relative mx-auto max-w-5xl px-4 pb-16 pt-6 text-center sm:px-6 sm:pb-24">
-          <p className="font-sans text-sm font-semibold tracking-tight text-white/80">{brand.name}</p>
+          <p className="mx-auto mt-4 inline-block rounded-full border border-accent/70 px-6 py-2.5 font-sans text-xs font-bold uppercase tracking-[0.25em] text-accent sm:mt-8 sm:px-8 sm:py-3 sm:text-sm">
+            {c.topBadge}
+          </p>
 
-          <p className="mx-auto mt-10 inline-block rounded-full bg-accent px-5 py-2 font-sans text-sm font-bold text-night shadow-lg shadow-accent/20 sm:text-base">
+          <p className="mx-auto mt-8 inline-block rounded-full bg-accent px-5 py-2 font-sans text-sm font-bold text-night shadow-lg shadow-accent/20 sm:text-base">
             {c.pill}
           </p>
           <h1 className="mx-auto mt-7 max-w-4xl font-sans text-[2rem] font-extrabold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl">
