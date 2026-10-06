@@ -8,7 +8,7 @@ function stamp(ms: number) {
 
 export function AddToCalendar({ startMs, roomUrl }: { startMs: number; roomUrl: string }) {
   const endMs = startMs + schedule.durationMinutes * 60_000;
-  const title = `Free YouTube Masterclass with ${brand.host}`;
+  const title = `Faceless YouTube Live Training with ${brand.host}`;
   const details = `Join the live room here: ${roomUrl}\n\nShow up 5 minutes early to grab your bonuses.`;
 
   const google = `https://calendar.google.com/calendar/render?${new URLSearchParams({
@@ -29,6 +29,8 @@ export function AddToCalendar({ startMs, roomUrl }: { startMs: number; roomUrl: 
     location: roomUrl,
   })}`;
 
+  const btn = "rounded-lg border border-cocoa/20 bg-white px-4 py-2.5 font-sans text-sm font-semibold text-cocoa transition-colors hover:bg-cream-2";
+
   function downloadIcs() {
     const esc = (s: string) => s.replace(/[\\,;]/g, (c) => `\\${c}`).replace(/\n/g, "\\n");
     const ics = [
@@ -47,7 +49,7 @@ export function AddToCalendar({ startMs, roomUrl }: { startMs: number; roomUrl: 
       "BEGIN:VALARM",
       "TRIGGER:-PT15M",
       "ACTION:DISPLAY",
-      "DESCRIPTION:Masterclass starts in 15 minutes",
+      "DESCRIPTION:Live training starts in 15 minutes",
       "END:VALARM",
       "END:VEVENT",
       "END:VCALENDAR",
@@ -55,16 +57,16 @@ export function AddToCalendar({ startMs, roomUrl }: { startMs: number; roomUrl: 
     const url = URL.createObjectURL(new Blob([ics], { type: "text/calendar;charset=utf-8" }));
     const a = document.createElement("a");
     a.href = url;
-    a.download = "youtube-masterclass.ics";
+    a.download = "faceless-youtube-training.ics";
     a.click();
     URL.revokeObjectURL(url);
   }
 
   return (
     <div className="flex flex-wrap gap-2">
-      <a href={google} target="_blank" rel="noopener noreferrer" className="btn-ghost text-sm">Google Calendar</a>
-      <button type="button" onClick={downloadIcs} className="btn-ghost text-sm">Apple / iCal</button>
-      <a href={outlook} target="_blank" rel="noopener noreferrer" className="btn-ghost text-sm">Outlook</a>
+      <a href={google} target="_blank" rel="noopener noreferrer" className={btn}>Google Calendar</a>
+      <button type="button" onClick={downloadIcs} className={btn}>Apple / iCal</button>
+      <a href={outlook} target="_blank" rel="noopener noreferrer" className={btn}>Outlook</a>
     </div>
   );
 }

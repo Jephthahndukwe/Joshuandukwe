@@ -1,6 +1,5 @@
 /**
  * All funnel copy lives here so the client can edit text without touching layout.
- * Swap any string, add or remove list items, and the pages update automatically.
  */
 
 export const brand = {
@@ -8,8 +7,6 @@ export const brand = {
   host: "Melda",
   siteUrl: "https://everythingmelda.com",
   supportEmail: "hello@everythingmelda.com",
-  instagram: "https://instagram.com/everythingmelda",
-  youtube: "https://youtube.com/@everythingmelda",
 };
 
 /**
@@ -24,155 +21,89 @@ export const schedule = {
   durationMinutes: 90,
 };
 
+/** "Live Training Starting Soon" bar: per-visitor countdown that restarts when it hits zero. */
+export const urgency = {
+  label: "Live Training",
+  sublabel: "Starting Soon",
+  countdownMinutes: 165,
+  cta: "Click here to register now!!!",
+};
+
 export const masterclass = {
-  eyebrow: "Free live masterclass",
-  title: "Grow a YouTube channel that pays you,",
-  titleAccent: "without going viral or burning out.",
-  subtitle:
-    "In 90 minutes I'll show you the exact system I use to plan, film and publish videos that pull in subscribers, brand deals and paying clients on autopilot.",
-  cta: "Save my free seat",
-  ctaSub: "100% free. Live training with Q&A. Limited seats.",
-  stats: [
-    { value: "90 min", label: "Live, no fluff" },
-    { value: "3", label: "Core frameworks" },
-    { value: "Q&A", label: "Ask me anything" },
-  ],
+  pill: "Making Money Online Doesn’t Have To Be This Complicated",
+  headlineBefore: "How Everyday Nigerians Are Quietly Building Faceless YouTube Channels That Can Generate Over ",
+  headlineHighlight: "$1,000–$5,000+",
+  headlineAfter: " Monthly",
+  subhead: "You don’t need to be a YouTuber to start making money from YouTube.",
+  promise:
+    "Using MY simple step-by-step system to choose the right niche, create videos with AI, build your channel, and work towards monetization — from scratch. No showing your face. No followers. No prior YouTube experience. No complicated tech skills.",
 
-  painHeading: "Sound familiar?",
-  pains: [
-    "You've posted for months and your views are stuck in double digits.",
-    "You never know what to film next, so you don't film at all.",
-    "You spend a whole weekend editing one video that nobody watches.",
-    "You see creators with smaller audiences making real money and wonder what they know.",
-  ],
-  painResolution:
-    "It's not your camera, your voice or the algorithm. It's the missing system. That's what we fix on this masterclass.",
+  joinCta: "Click Here to Join the Live Training Now",
+  registerCta: "Click Here to Register Now!!!",
 
-  learnHeading: "What you'll walk away with",
+  intro:
+    "This training works even if you’ve never made a dollar online before. It is beginner-friendly, practical, and designed for anyone who wants to start building a faceless YouTube channel and creating an online income stream from home.",
+  proof: "A proven system that has already helped over 9,715 people get started with building online income.",
+  yourTurn: "Now it’s your turn.",
+  curious: "If you’ve been curious about faceless YouTube but don’t know where to start, this training will show you exactly what you need to know.",
+
+  learnHeading: "Here’s Exactly What I’ll Show You In This Training:",
   learn: [
-    {
-      title: "The Niche Clarity Formula",
-      body: "Pick a channel angle that attracts the right viewers and the brands that want to pay them, even in a crowded niche.",
-    },
-    {
-      title: "The Click-Worthy Content Map",
-      body: "How to find video ideas people are already searching for, and package them with titles and thumbnails that get clicked.",
-    },
-    {
-      title: "The 1-Day Filming Workflow",
-      body: "Batch a month of videos in a single day with a simple setup you already own. No studio, no expensive gear.",
-    },
-    {
-      title: "Retention Hooks That Hold Viewers",
-      body: "The first-30-seconds script structure that keeps people watching, so YouTube pushes your videos to more people.",
-    },
-    {
-      title: "Monetise Before 1,000 Subscribers",
-      body: "Turn small, engaged audiences into income with affiliate links, digital products, coaching and brand partnerships.",
-    },
-    {
-      title: "Your 30-Day Launch Plan",
-      body: "Leave with a clear, step-by-step plan for your next 30 days so you actually take action straight after the call.",
-    },
+    "How to find the right faceless YouTube niche",
+    "How to create YouTube videos using AI, even if you have no editing experience",
+    "How to build your channel from scratch and create content consistently",
+    "How YouTube monetization works and what you need to do to work towards earning from your channel",
+    "The common mistakes beginners make and how to avoid them",
+    "How to outsource and scale your channel when you’re ready",
   ],
 
-  audienceHeading: "This masterclass is for you if…",
-  audienceFor: [
-    "You're a mum, professional or business owner who wants to grow on YouTube around a busy life",
-    "You've started a channel but growth has stalled",
-    "You want YouTube to bring in income, clients or brand deals, not just views",
-    "You're ready to show up consistently with a simple system",
-  ],
-  audienceNotFor: [
-    "You're looking for a get-rich-quick shortcut",
-    "You're not willing to put in a few focused hours a week",
-  ],
+  tip: "This training is beginner-friendly, practical, and designed to help you get started without feeling overwhelmed. Follow the steps I’ll show you, and you can start building your faceless YouTube channel sooner than you think.",
 
-  hostHeading: "Meet your host",
-  hostName: "Melda",
-  hostRole: "YouTube creator, mompreneur & content strategist",
-  hostBio: [
-    "I started my channel while juggling family life and a business, filming in whatever spare hour I could find. For a long time nothing worked, until I stopped guessing and built a repeatable system.",
-    "Today my content reaches people all over the world and has opened doors to brand partnerships, a thriving community and income I never thought YouTube could bring.",
-    "In this masterclass I'm handing you the same system, step by step, so you can skip the years of trial and error.",
+  notForHeading: "PLEASE NOTE: This Training Is Not For Everyone",
+  notForLead: "This is not for you if:",
+  notFor: [
+    "You’re looking for quick money / Ponzi schemes",
+    "You’re not ready to put in the work",
+    "You have a negative mindset about making money online",
   ],
-  hostImage: "/melda.svg",
+  actionTakers: "This training is for action takers who are ready to learn, apply what they’re taught, and build a real online income.",
 
-  testimonialsHeading: "What past attendees say",
-  testimonials: [
-    {
-      quote:
-        "I'd been posting for a year with no traction. After applying the content map my last three videos each outperformed my whole previous year.",
-      name: "Aisha K.",
-      role: "Lifestyle creator",
-    },
-    {
-      quote:
-        "The batch filming workflow alone was worth it. I filmed four videos on a Sunday and finally have a consistent schedule.",
-      name: "Rachel M.",
-      role: "Mum of two & beauty creator",
-    },
-    {
-      quote:
-        "I landed my first paid brand deal with under 2,000 subscribers using what Melda taught. Clear, practical and genuinely generous.",
-      name: "Tolu A.",
-      role: "Small business owner",
-    },
-  ],
+  disclaimer:
+    "This site is not part of the Facebook website or Facebook Inc. Additionally, this site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.",
 
-  faqHeading: "Questions, answered",
-  faqs: [
-    {
-      q: "Is the masterclass really free?",
-      a: "Yes. There's no cost to attend. Just register with your name and email and you'll get your private access link.",
-    },
-    {
-      q: "How long is the training?",
-      a: "Around 90 minutes including live Q&A. Block out the time so you can take notes and ask questions.",
-    },
-    {
-      q: "Will there be a replay?",
-      a: "Attending live is strongly recommended. Replays are not guaranteed and live attendees get exclusive bonuses.",
-    },
-    {
-      q: "I'm a complete beginner. Is this for me?",
-      a: "Absolutely. Whether you have zero videos or a hundred, the frameworks work at every stage.",
-    },
-    {
-      q: "Do I need expensive equipment?",
-      a: "No. Everything I teach works with a smartphone and natural light.",
-    },
-  ],
-
-  finalHeading: "Your seat is waiting.",
-  finalBody:
-    "Seats on the live session are limited. Register now and I'll send your private access link straight to your inbox.",
+  form: {
+    heading: "Reserve Your Free Spot",
+    sub: "Enter your first name and correct email to join the live training.",
+    submit: "Join the Live Training Now",
+    loading: "Securing your spot…",
+    privacy: "100% free. Your details are safe with us.",
+  },
 };
 
 export const confirm = {
-  eyebrow: "You're registered",
-  title: "Your seat is confirmed",
-  subtitle: "Complete the 3 steps below so you don't miss the live training.",
+  eyebrow: "You’re registered",
+  title: "Your Spot Is Confirmed!",
+  subtitle: "Complete the 3 steps below so you don’t miss the live training.",
   steps: [
     {
       title: "Add it to your calendar",
-      body: "Lock the time in now. Most people who miss the live session simply forgot.",
+      body: "Lock the time in now. Most people who miss the live training simply forgot.",
     },
     {
       title: "Check your inbox",
-      body: "Your private access link is on its way. If you can't see it, check spam or promotions and mark it as safe.",
+      body: "Your private access link is on its way. If you can’t see it, check spam or promotions and mark it as safe.",
     },
     {
       title: "Show up live, 5 minutes early",
-      body: "Live attendees get the full Q&A and exclusive bonuses that won't be in any replay.",
+      body: "Live attendees get the full Q&A and bonuses that won’t be in any replay.",
     },
   ],
-  joinCta: "Join the live room",
-  prepHeading: "Before the masterclass",
+  joinCta: "Click Here to Join the Live Training",
+  prepHeading: "Before the training",
   prep: [
-    "Have a notebook ready. You'll be filling in your 30-day plan live.",
-    "Join on a laptop if you can, so you can see the slides clearly.",
-    "Write down your biggest YouTube question to ask in the Q&A.",
-    "Find a quiet spot and give yourself the full 90 minutes.",
+    "Have a notebook ready. You’ll want to take notes.",
+    "Join on a laptop if you can, so you can see the screen clearly.",
+    "Write down your biggest question about faceless YouTube for the Q&A.",
+    "Find a quiet spot and give yourself the full session.",
   ],
 };

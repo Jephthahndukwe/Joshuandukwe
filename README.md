@@ -1,10 +1,10 @@
-# Everything Melda: YouTube Masterclass Funnel
+# Everything Melda: Faceless YouTube Live Training Funnel
 
 Two-step webinar funnel built with Next.js (App Router), TypeScript and Tailwind CSS v4.
 
 | Route | Purpose |
 | --- | --- |
-| `/youtube-masterclass` | Registration landing page (hero + countdown, pain points, curriculum, audience fit, host bio, testimonials, FAQ, final CTA, mobile sticky CTA) |
+| `/youtube-masterclass` | Registration page matching the live everythingmelda.com design: hero, learning list, not-for-everyone section, popup opt-in form and sticky "Live Training Starting Soon" countdown bar |
 | `/confirm` | Thank-you page. Reads the WebinarJam `wj_*` query params (live room link, timestamp, timezone, date/time labels) and shows countdown, join button, add-to-calendar (Google, Apple/ICS, Outlook) and prep steps |
 | `/api/register` | Validates the lead, registers it with WebinarJam, then redirects to `/confirm` with WebinarJam-format params |
 | `/` | Redirects to `/youtube-masterclass` |
@@ -12,7 +12,7 @@ Two-step webinar funnel built with Next.js (App Router), TypeScript and Tailwind
 ## Editing copy
 
 All text lives in `src/lib/content.ts` (headlines, bullets, testimonials, FAQ, host bio, schedule).
-Replace `public/melda.svg` with the host photo (keep the path or update `hostImage`).
+The sticky bar countdown is per visitor and restarts when it hits zero (`urgency.countdownMinutes`).
 
 ## WebinarJam setup
 

@@ -3,12 +3,14 @@
 import { useEffect, useState } from "react";
 import { schedule } from "@/lib/content";
 
-function split(ms: number) {
-  const s = Math.max(0, Math.floor(ms / 1000));
-  return { days: Math.floor(s / 86400), hours: Math.floor((s % 86400) / 3600), minutes: Math.floor((s % 3600) / 60), seconds: s % 60 };
+const pad = (n: number) => String(n).padStart(2, "0");
+
+function Box({ children }: { children: React.ReactNode }) {
+  return <span className="grid h-10 min-w-10 place-items-center rounded bg-navy px-2 font-sans text-lg font-bold tabular-nums text-white">{children}</span>;
 }
 
-export function Countdown({ target, compact = false }: { target: number; compact?: boolean }) {
+/** Countdown to a fixed session start (used on the confirm page). */
+export function Countdown({ target }: { target: number }) {
   const [now, setNow] = useState<number | null>(null);
 
   useEffect(() => {
@@ -20,39 +22,67 @@ export function Countdown({ target, compact = false }: { target: number; compact
   const remaining = now === null ? null : target - now;
 
   if (remaining !== null && remaining <= -schedule.durationMinutes * 60_000) {
-    return (
-      <div className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-4 py-2 text-sm font-medium text-muted">
-        This session has ended
-      </div>
-    );
+    return <p className="font-sans font-semibold text-soft">This session has ended</p>;
   }
-
   if (remaining !== null && remaining <= 0) {
-    return (
-      <div className="inline-flex items-center gap-2 rounded-full border border-brand/40 bg-brand/10 px-4 py-2 text-sm font-semibold text-brand">
-        <span className="live-dot size-2 rounded-full bg-brand" /> We&apos;re live now
-      </div>
-    );
+    return <p className="font-sans font-bold text-cta">● We’re live now</p>;
   }
 
-  const t = split(remaining ?? 0);
-  const units = [
-    { label: "Days", value: t.days },
-    { label: "Hours", value: t.hours },
-    { label: "Mins", value: t.minutes },
-    { label: "Secs", value: t.seconds },
+  const s = Math.max(0, Math.floor((remaining ?? 0) / 1000));
+  const parts = [
+    { label: "Days", value: Math.floor(s / 86400) },
+    { label: "Hrs", value: Math.floor((s % 86400) / 3600) },
+    { label: "Mins", value: Math.floor((s % 3600) / 60) },
+    { label: "Secs", value: s % 60 },
   ];
 
   return (
-    <div className="flex gap-2 sm:gap-3" aria-label="Time until the masterclass starts" role="timer">
-      {units.map((u) => (
-        <div key={u.label} className={`card flex flex-col items-center justify-center ${compact ? "w-16 py-2" : "w-[4.5rem] py-3 sm:w-20"}`}>
-          <span className={`font-semibold tabular-nums ${compact ? "text-xl" : "text-2xl sm:text-3xl"}`}>
-            {remaining === null ? "--" : String(u.value).padStart(2, "0")}
-          </span>
-          <span className="mt-0.5 text-[10px] uppercase tracking-widest text-muted">{u.label}</span>
+    <div className="flex justify-center gap-2" role="timer" aria-label="Time until the live training starts">
+      {parts.map((p) => (
+        <div key={p.label} className="flex flex-col items-center gap-1">
+          <Box>{remaining === null ? "--" : pad(p.value)}</Box>
+          <span className="font-sans text-[10px] uppercase tracking-wider text-soft">{p.label}</span>
         </div>
       ))}
+    </div>
+  );
+}
+
+const STORAGE_KEY = "em_urgency_deadline";
+
+/** Per-visitor HH:MM:SS countdown for the sticky bar; restarts when it reaches zero. */
+export function EvergreenCountdown({ minutes }: { minutes: number }) {
+  const [left, setLeft] = useState<number | null>(null);
+
+  useEffect(() => {
+    const span = minutes * 60_000;
+    let deadline = 0;
+    try {
+      deadline = Number(localStorage.getItem(STORAGE_KEY)) || 0;
+    } catch {}
+    const tick = () => {
+      const now = Date.now();
+      if (deadline <= now) {
+        deadline = now + span;
+        try {
+          localStorage.setItem(STORAGE_KEY, String(deadline));
+        } catch {}
+      }
+      setLeft(deadline - now);
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, [minutes]);
+
+  const s = Math.max(0, Math.floor((left ?? 0) / 1000));
+  const vals = left === null ? ["--", "--", "--"] : [pad(Math.floor(s / 3600)), pad(Math.floor((s % 3600) / 60)), pad(s % 60)];
+
+  return (
+    <div className="flex items-center gap-1.5" role="timer" aria-label="Time until the live training starts">
+      <Box>{vals[0]}</Box><span className="font-bold text-white">:</span>
+      <Box>{vals[1]}</Box><span className="font-bold text-white">:</span>
+      <Box>{vals[2]}</Box>
     </div>
   );
 }

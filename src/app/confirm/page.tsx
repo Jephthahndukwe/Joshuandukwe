@@ -1,82 +1,71 @@
 import type { Metadata } from "next";
 import { AddToCalendar } from "@/components/AddToCalendar";
+import { Disclaimer } from "@/components/Chrome";
 import { Countdown } from "@/components/Countdown";
-import { Footer, Logo } from "@/components/Chrome";
 import { brand, confirm as c } from "@/lib/content";
 import { eventFromSearchParams } from "@/lib/webinar";
 
-export const metadata: Metadata = { title: "You're Registered", robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: "You’re Registered", robots: { index: false, follow: false } };
 
 export default async function ConfirmPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const event = eventFromSearchParams(await searchParams);
 
   return (
-    <>
-      <header className="border-b border-line">
-        <div className="mx-auto flex h-16 max-w-6xl items-center px-4 sm:px-6"><Logo /></div>
-      </header>
+    <main className="mx-auto max-w-5xl px-4 pt-10 sm:px-6 sm:pt-20">
+      <section className="bg-cocoa px-5 py-10 text-center sm:px-10 sm:py-14">
+        <p className="mx-auto inline-block rounded-full bg-gold px-6 py-2.5 font-serif text-base font-bold text-cocoa sm:text-lg">{c.eyebrow} ✓</p>
+        <h1 className="mt-6 font-sans text-4xl font-extrabold tracking-tight text-white sm:text-5xl">{c.title}</h1>
+        <p className="mt-4 text-lg italic text-white/85 sm:text-xl">{c.subtitle}</p>
 
-      <main className="relative overflow-hidden">
-        <div className="glow pointer-events-none absolute inset-0" />
-        <div className="grid-bg pointer-events-none absolute inset-0" />
+        <div className="mx-auto mt-8 max-w-xl rounded border border-white/40 px-5 py-6 text-white">
+          <p className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-gold">Faceless YouTube Live Training with {brand.host}</p>
+          <p className="mt-3 font-sans text-2xl font-bold">{event.date}</p>
+          <p className="text-white/80">{event.time} {event.tzLabel}</p>
+          <div className="mt-5 rounded bg-cream px-3 py-4"><Countdown target={event.startMs} /></div>
+        </div>
+      </section>
 
-        <section className="relative mx-auto max-w-3xl px-4 pb-16 pt-14 text-center sm:px-6 sm:pt-20">
-          <div className="mx-auto mb-6 grid size-14 place-items-center rounded-full bg-gradient-to-br from-brand to-brand-2 shadow-xl shadow-brand/40">
-            <svg viewBox="0 0 24 24" className="size-7 fill-none stroke-white stroke-[2.5]" aria-hidden><path d="m5 12.5 4.5 4.5L19 7.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+      <div className="mx-auto max-w-[57rem]">
+        {event.roomUrl && (
+          <div className="my-12 text-center">
+            <a href={event.roomUrl} target="_blank" rel="noopener noreferrer" className="btn-cta w-full sm:w-auto">{c.joinCta}</a>
+            <p className="mt-4 break-all font-sans text-sm text-soft">
+              Your personal link: <a href={event.roomUrl} className="underline underline-offset-4 hover:text-body">{event.roomUrl}</a>
+            </p>
+            {event.roomPassword && <p className="mt-1 font-sans text-sm text-soft">Room password: <span className="font-mono text-body">{event.roomPassword}</span></p>}
           </div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand">{c.eyebrow}</p>
-          <h1 className="mt-3 font-display text-5xl tracking-tight sm:text-6xl">{c.title}</h1>
-          <p className="mx-auto mt-4 max-w-lg text-lg text-zinc-300">{c.subtitle}</p>
+        )}
 
-          <div className="card mx-auto mt-10 max-w-xl p-6 sm:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">Free YouTube Masterclass with {brand.host}</p>
-            <p className="mt-3 text-2xl font-semibold">{event.date}</p>
-            <p className="text-muted">{event.time} {event.tzLabel}</p>
-            <div className="mt-6 flex justify-center"><Countdown target={event.startMs} /></div>
-            {event.roomUrl && (
-              <div className="mt-8">
-                <a href={event.roomUrl} target="_blank" rel="noopener noreferrer" className="btn-primary w-full">{c.joinCta} <span aria-hidden>→</span></a>
-                <p className="mt-3 break-all text-xs text-muted">
-                  Your personal link: <a href={event.roomUrl} className="underline decoration-line underline-offset-4 hover:text-white">{event.roomUrl}</a>
-                </p>
-                {event.roomPassword && <p className="mt-1 text-xs text-muted">Room password: <span className="font-mono text-white">{event.roomPassword}</span></p>}
+        <ol className="space-y-4">
+          {c.steps.map((s, i) => (
+            <li key={s.title} className="flex gap-4 border-l-4 border-gold bg-cream-2 px-5 py-5 sm:px-6">
+              <span className="grid size-9 shrink-0 place-items-center rounded-full bg-cta font-sans font-bold text-white">{i + 1}</span>
+              <div className="flex-1">
+                <h2 className="text-xl font-bold">{s.title}</h2>
+                <p className="mt-1 text-lg leading-relaxed text-soft">{s.body}</p>
+                {i === 0 && <div className="mt-4"><AddToCalendar startMs={event.startMs} roomUrl={event.roomUrl} /></div>}
               </div>
-            )}
-          </div>
-        </section>
+            </li>
+          ))}
+        </ol>
 
-        <section className="relative mx-auto max-w-3xl px-4 pb-20 sm:px-6">
-          <ol className="space-y-4">
-            {c.steps.map((s, i) => (
-              <li key={s.title} className="card flex gap-5 p-6">
-                <span className="grid size-10 shrink-0 place-items-center rounded-full border border-brand/40 bg-brand/10 font-semibold text-brand">{i + 1}</span>
-                <div className="flex-1">
-                  <h2 className="text-lg font-semibold">{s.title}</h2>
-                  <p className="mt-1 leading-relaxed text-muted">{s.body}</p>
-                  {i === 0 && <div className="mt-4"><AddToCalendar startMs={event.startMs} roomUrl={event.roomUrl} /></div>}
-                </div>
+        <section className="mt-12 bg-cocoa-2 px-5 py-10 sm:px-10">
+          <h2 className="text-center font-sans text-2xl font-extrabold tracking-tight text-white sm:text-3xl">{c.prepHeading}</h2>
+          <ul className="mt-6 space-y-4">
+            {c.prep.map((p) => (
+              <li key={p} className="flex gap-3 text-lg leading-relaxed text-white/90">
+                <span className="mt-0.5 text-gold" aria-hidden>√</span>{p}
               </li>
             ))}
-          </ol>
-
-          <div className="card mt-10 p-6 sm:p-8">
-            <h2 className="font-display text-3xl tracking-tight">{c.prepHeading}</h2>
-            <ul className="mt-5 space-y-3">
-              {c.prep.map((p) => (
-                <li key={p} className="flex gap-3 text-zinc-300">
-                  <span className="mt-2 size-1.5 shrink-0 rounded-full bg-brand" />{p}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <p className="mt-10 text-center text-sm text-muted">
-            Questions? Email <a href={`mailto:${brand.supportEmail}`} className="text-white underline underline-offset-4">{brand.supportEmail}</a>
-          </p>
+          </ul>
         </section>
-      </main>
 
-      <Footer />
-    </>
+        <p className="mt-10 text-center text-lg text-soft">
+          Questions? Email <a href={`mailto:${brand.supportEmail}`} className="font-bold text-body underline underline-offset-4">{brand.supportEmail}</a>
+        </p>
+      </div>
+
+      <Disclaimer />
+    </main>
   );
 }
