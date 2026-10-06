@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Disclaimer } from "@/components/Chrome";
+import { JoinButton } from "@/components/JoinButton";
 import { confirm as c } from "@/lib/content";
 import { eventFromSearchParams } from "@/lib/webinar";
 
@@ -44,23 +45,15 @@ export default async function ConfirmPage({ searchParams }: { searchParams: Prom
           </p>
           <p className="mt-1 font-sans text-xs text-soft">{event.tzLabel}</p>
 
-          {event.roomUrl ? (
-            <>
-              <p className="mt-4 font-sans text-base font-semibold">{c.joinPrompt}</p>
-              <div className="mt-3 flex justify-center gap-4" aria-hidden>
-                <Arrow tilt={-14} /><Arrow tilt={0} /><Arrow tilt={14} />
-              </div>
-              <a href={event.roomUrl} target="_blank" rel="noopener noreferrer" className="btn-cta mt-3 w-full font-sans uppercase tracking-wide">
-                {c.joinButton}
-              </a>
-              {event.roomPassword && (
-                <p className="mt-3 font-sans text-sm text-soft">Room password: <span className="font-mono text-body">{event.roomPassword}</span></p>
-              )}
-              <p className="mt-5 font-sans text-sm leading-relaxed text-cta-dark sm:text-base">{c.noRedirect}</p>
-            </>
-          ) : (
-            <p className="mt-5 font-sans text-base font-semibold leading-relaxed">{c.noLink}</p>
+          <p className="mt-4 font-sans text-base font-semibold">{c.joinPrompt}</p>
+          <div className="mt-3 flex justify-center gap-4" aria-hidden>
+            <Arrow tilt={-14} /><Arrow tilt={0} /><Arrow tilt={14} />
+          </div>
+          <JoinButton roomUrl={event.roomUrl} />
+          {event.roomPassword && (
+            <p className="mt-3 font-sans text-sm text-soft">Room password: <span className="font-mono text-body">{event.roomPassword}</span></p>
           )}
+          <p className="mt-5 font-sans text-sm leading-relaxed text-cta-dark sm:text-base">{c.noRedirect}</p>
         </section>
 
         <div className="mt-8 space-y-4 text-base italic leading-relaxed text-white/80 sm:text-lg">

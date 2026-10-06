@@ -1,4 +1,4 @@
-import { schedule } from "./content";
+import { brand, schedule } from "./content";
 import { formatEvent, nextSessionStart } from "./schedule";
 
 type SearchParams = Record<string, string | string[] | undefined>;
@@ -14,7 +14,7 @@ export function eventFromSearchParams(sp: SearchParams) {
   const room = first(sp.wj_lead_unique_link_live_room);
   return {
     // Only trust WebinarJam links, so the page can't be used to bounce people elsewhere.
-    roomUrl: /^https:\/\/([a-z0-9-]+\.)*webinarjam\.com\//i.test(room) ? room : process.env.NEXT_PUBLIC_FALLBACK_ROOM_URL ?? "",
+    roomUrl: /^https:\/\/([a-z0-9-]+\.)*webinarjam\.com\//i.test(room) ? room : brand.liveRoomUrl,
     roomPassword: first(sp.wj_room_password),
     date: first(sp.wj_next_event_date) || computed.date,
     time: first(sp.wj_next_event_time) || computed.time,

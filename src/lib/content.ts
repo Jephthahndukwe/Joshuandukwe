@@ -9,6 +9,8 @@ export const brand = {
   siteUrl:
     process.env.NEXT_PUBLIC_SITE_URL ??
     (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000"),
+  // Joshua's WebinarJam live room link. Used on the success page when WebinarJam doesn't pass a personal link.
+  liveRoomUrl: process.env.NEXT_PUBLIC_FALLBACK_ROOM_URL ?? "",
   // Shown on the confirm page when set.
   supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL ?? "",
 };
