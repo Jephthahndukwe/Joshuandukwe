@@ -8,7 +8,7 @@ function Box({ children }: { children: React.ReactNode }) {
   return <span className="grid h-10 min-w-10 place-items-center rounded bg-navy px-2 font-sans text-lg font-bold tabular-nums text-white">{children}</span>;
 }
 
-const STORAGE_KEY = "em_urgency_deadline";
+const STORAGE_KEY = "urgency_deadline";
 
 /** Per-visitor HH:MM:SS countdown for the sticky bar; restarts when it reaches zero. */
 export function EvergreenCountdown({ minutes }: { minutes: number }) {
@@ -22,7 +22,8 @@ export function EvergreenCountdown({ minutes }: { minutes: number }) {
     } catch {}
     const tick = () => {
       const now = Date.now();
-      if (deadline <= now) {
+      // Restart when expired, or when a saved deadline is longer than the current setting.
+      if (deadline <= now || deadline > now + span) {
         deadline = now + span;
         try {
           localStorage.setItem(STORAGE_KEY, String(deadline));

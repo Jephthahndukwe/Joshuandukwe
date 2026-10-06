@@ -29,7 +29,7 @@ export const schedule = {
 export const urgency = {
   label: "Live Training",
   sublabel: "Starting Soon",
-  countdownMinutes: 165,
+  countdownMinutes: 1,
   cta: "Click here to register now!!!",
 };
 
