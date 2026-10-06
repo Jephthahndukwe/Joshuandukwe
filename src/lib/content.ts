@@ -9,8 +9,6 @@ export const brand = {
   siteUrl:
     process.env.NEXT_PUBLIC_SITE_URL ??
     (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000"),
-  // Joshua's WebinarJam live room link. Used on the success page when WebinarJam doesn't pass a personal link.
-  liveRoomUrl: process.env.NEXT_PUBLIC_FALLBACK_ROOM_URL ?? "",
   // Shown on the confirm page when set.
   supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL ?? "",
 };
@@ -127,8 +125,9 @@ export const confirm = {
   reservedLabel: "Your training slot is reserved at:",
   joinPrompt: "Click the button below to enter the training once it is time",
   joinButton: "Join the training",
+  // Where the Join the Training button on the success page goes.
+  joinUrl: "https://chat.whatsapp.com/Joxy8o6byCs43eRCJTv4qn?s=cl&p=a&mlu=0&iam=0",
   noRedirect: "Be sure to click the button above at the scheduled time: this page will NOT automatically redirect.",
-  noLink: "Your personal joining link has been sent to your email. Use it at the scheduled time to enter the training.",
   emailNote: "You should have received an email about this training. Kindly check your inbox and mark the mail as important.",
   updatesNote: "I’ll be sending you updates about this training, plus insights on other smart ways people are building income online, from time to time.",
 };
