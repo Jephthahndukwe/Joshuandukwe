@@ -1,52 +1,77 @@
 import type { Metadata } from "next";
 import { Disclaimer } from "@/components/Chrome";
-import { SeenConfirm } from "@/components/SeenConfirm";
-import { confirm as c, masterclass } from "@/lib/content";
+import { confirm as c } from "@/lib/content";
+import { eventFromSearchParams } from "@/lib/webinar";
 
 export const metadata: Metadata = { title: "Seat Confirmed", robots: { index: false, follow: false } };
 
-export default function ConfirmPage() {
+function Arrow({ tilt }: { tilt: number }) {
   return (
-    <main className="mx-auto max-w-4xl px-5 pt-6 sm:px-6 sm:pt-12">
-      <section className="hero-glow relative overflow-hidden rounded-3xl px-5 pb-12 pt-10 text-center text-white sm:px-12 sm:pb-16 sm:pt-14">
-        <div className="dots pointer-events-none absolute inset-0" />
-        <div className="relative">
-          <p className="mx-auto inline-block rounded-full bg-accent px-5 py-3 font-sans text-sm font-bold text-night shadow-lg shadow-accent/20 sm:px-8 sm:text-base">{c.pill}</p>
-          <h1 className="mx-auto mt-8 max-w-4xl font-sans text-[1.65rem] font-extrabold leading-[1.2] tracking-tight sm:text-4xl">
-            {masterclass.headlineBefore}
-            <span className="text-accent">{masterclass.headlineHighlight}</span>
-            {masterclass.headlineAfter}
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg">{c.sub}</p>
-          <p className="mt-8 font-sans text-base font-extrabold uppercase tracking-wide text-cta">{c.scarcity}</p>
+    <svg viewBox="0 0 40 80" className="h-14 w-7 text-cta sm:h-16" style={{ transform: `rotate(${tilt}deg)` }} aria-hidden>
+      <path d="M20 4 C 18 26, 22 46, 20 70 M8 56 L20 72 L32 56" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
-          {/* Main card */}
-          <div className="mx-auto mt-8 max-w-2xl rounded-3xl bg-night-2 p-2 ring-1 ring-white/10">
-            <div className="rounded-[1.25rem] border-2 border-accent bg-paper px-5 py-8 text-body sm:px-10">
-              <p className="inline-block rounded-full bg-cta px-5 py-2 font-sans text-sm font-bold uppercase tracking-wide text-white">{c.badge}</p>
-              <h2 className="mt-5 font-sans text-2xl font-extrabold tracking-tight">{c.cardHeading}</h2>
-              <div className="mt-5 space-y-4 text-base leading-relaxed text-soft">
-                {c.cardBody.map((p) => <p key={p}>{p}</p>)}
+export default async function ConfirmPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const event = eventFromSearchParams(await searchParams);
+
+  return (
+    <main className="hero-glow relative min-h-dvh overflow-hidden text-white">
+      <div className="dots pointer-events-none absolute inset-0" />
+      <div className="relative mx-auto max-w-3xl px-5 pb-6 pt-12 text-center sm:px-6 sm:pt-16">
+        <p className="font-sans text-base font-bold italic text-accent sm:text-lg">{c.secured}</p>
+
+        <h1 className="mt-6 font-sans text-[1.65rem] font-extrabold leading-[1.2] tracking-tight sm:text-4xl">
+          {c.headlineBefore}
+          <span className="text-accent">{c.headlineHighlight}</span>
+          {c.headlineMiddle}
+          <em className="underline decoration-2 underline-offset-4">{c.headlineEmphasis}</em>
+        </h1>
+
+        <p className="mx-auto mt-6 max-w-2xl font-sans text-base leading-relaxed text-white/85 sm:text-lg">
+          {c.sub}<strong className="text-white">{c.subStrong}</strong>
+        </p>
+
+        <p className="mt-6 font-sans text-sm font-bold uppercase tracking-wide text-cta sm:text-base">🔥 {c.scarcity}</p>
+
+        {/* How to join */}
+        <section className="mt-6 rounded-2xl border-2 border-dashed border-cta bg-paper px-5 py-8 text-body sm:px-10">
+          <h2 className="font-sans text-2xl font-extrabold tracking-tight sm:text-3xl">{c.joinHeading}</h2>
+          <p className="mt-5 font-sans text-base text-soft">
+            {c.reservedLabel}{" "}
+            <strong className="text-body">{event.time}, {event.date}</strong>
+          </p>
+          <p className="mt-1 font-sans text-xs text-soft">{event.tzLabel}</p>
+
+          {event.roomUrl ? (
+            <>
+              <p className="mt-4 font-sans text-base font-semibold">{c.joinPrompt}</p>
+              <div className="mt-3 flex justify-center gap-4" aria-hidden>
+                <Arrow tilt={-14} /><Arrow tilt={0} /><Arrow tilt={14} />
               </div>
-              <SeenConfirm />
-              <p className="mt-5 text-base leading-relaxed text-soft">{c.closeNote}</p>
-            </div>
-          </div>
+              <a href={event.roomUrl} target="_blank" rel="noopener noreferrer" className="btn-cta mt-3 w-full font-sans uppercase tracking-wide">
+                {c.joinButton}
+              </a>
+              {event.roomPassword && (
+                <p className="mt-3 font-sans text-sm text-soft">Room password: <span className="font-mono text-body">{event.roomPassword}</span></p>
+              )}
+              <p className="mt-5 font-sans text-sm leading-relaxed text-cta-dark sm:text-base">{c.noRedirect}</p>
+            </>
+          ) : (
+            <p className="mt-5 font-sans text-base font-semibold leading-relaxed">{c.noLink}</p>
+          )}
+        </section>
 
-          {/* Important */}
-          <div className="mx-auto mt-8 max-w-2xl rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-7 text-left sm:px-8">
-            <p className="text-center font-sans text-lg font-extrabold uppercase tracking-wide text-accent">{c.importantHeading}</p>
-            <p className="mt-6 text-base leading-relaxed text-white/90">{c.importantLead}</p>
-            <p className="mt-4 text-base text-white/90">{c.importantIf}</p>
-            <ul className="mt-3 list-disc space-y-2 pl-7 text-base text-white/90 marker:text-accent">
-              {c.importantList.map((i) => <li key={i}>{i}</li>)}
-            </ul>
-            <p className="mt-5 text-base leading-relaxed text-white/90">{c.importantOutro}</p>
-          </div>
+        <div className="mt-8 space-y-4 text-base italic leading-relaxed text-white/80 sm:text-lg">
+          <p>{c.emailNote}</p>
+          <p>{c.updatesNote}</p>
         </div>
-      </section>
+      </div>
 
-      <Disclaimer />
+      <div className="relative [&_footer]:text-white/50">
+        <Disclaimer />
+      </div>
     </main>
   );
 }
