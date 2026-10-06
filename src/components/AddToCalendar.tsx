@@ -36,9 +36,9 @@ export function AddToCalendar({ startMs, roomUrl }: { startMs: number; roomUrl: 
     const ics = [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
-      "PRODID:-//Everything Melda//Masterclass//EN",
+      "PRODID:-//Joshua Ndukwe//Live Training//EN",
       "BEGIN:VEVENT",
-      `UID:${startMs}-masterclass@everythingmelda.com`,
+      `UID:${startMs}-live-training@joshuandukwe`,
       `DTSTAMP:${stamp(Date.now())}`,
       `DTSTART:${stamp(startMs)}`,
       `DTEND:${stamp(endMs)}`,

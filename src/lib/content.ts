@@ -3,10 +3,14 @@
  */
 
 export const brand = {
-  name: "Everything Melda",
-  host: "Melda",
-  siteUrl: "https://everythingmelda.com",
-  supportEmail: "hello@everythingmelda.com",
+  name: "Joshua Ndukwe",
+  host: "Joshua Ndukwe",
+  // Set NEXT_PUBLIC_SITE_URL once the custom domain is live; Vercel's production URL is used until then.
+  siteUrl:
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000"),
+  // Shown on the confirm page when set.
+  supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL ?? "",
 };
 
 /**

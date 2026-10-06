@@ -1,10 +1,10 @@
-# Everything Melda: Faceless YouTube Live Training Funnel
+# Joshua Ndukwe: Faceless YouTube Live Training Funnel
 
 Two-step webinar funnel built with Next.js (App Router), TypeScript and Tailwind CSS v4.
 
 | Route | Purpose |
 | --- | --- |
-| `/youtube-masterclass` | Registration page matching the live everythingmelda.com design: hero, learning list, not-for-everyone section, popup opt-in form and sticky "Live Training Starting Soon" countdown bar |
+| `/youtube-masterclass` | Registration page inspired by the original masterclass page: hero, learning list, not-for-everyone section, popup opt-in form and sticky "Live Training Starting Soon" countdown bar |
 | `/confirm` | Thank-you page. Reads the WebinarJam `wj_*` query params (live room link, timestamp, timezone, date/time labels) and shows countdown, join button, add-to-calendar (Google, Apple/ICS, Outlook) and prep steps |
 | `/api/register` | Validates the lead, registers it with WebinarJam, then redirects to `/confirm` with WebinarJam-format params |
 | `/` | Redirects to `/youtube-masterclass` |

@@ -60,9 +60,11 @@ export default async function ConfirmPage({ searchParams }: { searchParams: Prom
           </ul>
         </section>
 
-        <p className="mt-10 text-center text-lg text-soft">
-          Questions? Email <a href={`mailto:${brand.supportEmail}`} className="font-bold text-body underline underline-offset-4">{brand.supportEmail}</a>
-        </p>
+        {brand.supportEmail && (
+          <p className="mt-10 text-center text-lg text-soft">
+            Questions? Email <a href={`mailto:${brand.supportEmail}`} className="font-bold text-body underline underline-offset-4">{brand.supportEmail}</a>
+          </p>
+        )}
       </div>
 
       <Disclaimer />

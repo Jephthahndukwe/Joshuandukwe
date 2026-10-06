@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Disclaimer } from "@/components/Chrome";
 import { EvergreenCountdown } from "@/components/Countdown";
 import { RegisterButton, RegisterModal } from "@/components/Register";
-import { masterclass as c, urgency } from "@/lib/content";
+import { brand, masterclass as c, urgency } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Free Faceless YouTube Training" };
 
@@ -31,7 +31,7 @@ export default function MasterclassPage() {
       <header className="hero-glow relative overflow-hidden text-white">
         <div className="dots pointer-events-none absolute inset-0" />
         <div className="relative mx-auto max-w-5xl px-4 pb-16 pt-6 text-center sm:px-6 sm:pb-24">
-          <p className="font-sans text-sm font-semibold tracking-tight text-white/80">Everything Melda</p>
+          <p className="font-sans text-sm font-semibold tracking-tight text-white/80">{brand.name}</p>
 
           <p className="mx-auto mt-10 inline-block rounded-full bg-gold px-5 py-2 font-sans text-sm font-bold text-cocoa shadow-lg shadow-gold/20 sm:text-base">
             {c.pill}
