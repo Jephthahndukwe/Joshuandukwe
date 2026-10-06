@@ -54,7 +54,7 @@ export default async function ConfirmPage({ searchParams }: { searchParams: Prom
           <ul className="mt-6 space-y-4">
             {c.prep.map((p) => (
               <li key={p} className="flex gap-3 text-lg leading-relaxed text-white/90">
-                <span className="mt-0.5 text-gold" aria-hidden>√</span>{p}
+                <span className="mt-0.5 text-gold" aria-hidden>✓</span>{p}
               </li>
             ))}
           </ul>

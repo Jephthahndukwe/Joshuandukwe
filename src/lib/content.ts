@@ -32,11 +32,15 @@ export const urgency = {
 export const masterclass = {
   pill: "Making Money Online Doesn’t Have To Be This Complicated",
   headlineBefore: "How Everyday Nigerians Are Quietly Building Faceless YouTube Channels That Can Generate Over ",
-  headlineHighlight: "$1,000–$5,000+",
+  headlineHighlight: "$1,000 to $5,000+",
   headlineAfter: " Monthly",
   subhead: "You don’t need to be a YouTuber to start making money from YouTube.",
   promise:
-    "Using MY simple step-by-step system to choose the right niche, create videos with AI, build your channel, and work towards monetization — from scratch. No showing your face. No followers. No prior YouTube experience. No complicated tech skills.",
+    "Using MY simple step-by-step system to choose the right niche, create videos with AI, build your channel, and work towards monetization from scratch.",
+  noNeed: ["No showing your face", "No followers", "No prior YouTube experience", "No complicated tech skills"],
+  heroMeta: ["100% free", "Live training", "Beginner friendly"],
+  proofStat: "9,715+",
+  proofLabel: "people already helped to start building online income",
 
   joinCta: "Click Here to Join the Live Training Now",
   registerCta: "Click Here to Register Now!!!",
@@ -47,7 +51,8 @@ export const masterclass = {
   yourTurn: "Now it’s your turn.",
   curious: "If you’ve been curious about faceless YouTube but don’t know where to start, this training will show you exactly what you need to know.",
 
-  learnHeading: "Here’s Exactly What I’ll Show You In This Training:",
+  learnEyebrow: "Inside the training",
+  learnHeading: "Here’s exactly what I’ll show you",
   learn: [
     "How to find the right faceless YouTube niche",
     "How to create YouTube videos using AI, even if you have no editing experience",
@@ -59,13 +64,20 @@ export const masterclass = {
 
   tip: "This training is beginner-friendly, practical, and designed to help you get started without feeling overwhelmed. Follow the steps I’ll show you, and you can start building your faceless YouTube channel sooner than you think.",
 
-  notForHeading: "PLEASE NOTE: This Training Is Not For Everyone",
-  notForLead: "This is not for you if:",
+  notForHeading: "Please note: this training is not for everyone",
+  notForLead: "This is not for you if…",
+  forLead: "This is for you if…",
+  forList: [
+    "You’re curious about faceless YouTube but don’t know where to start",
+    "You want to build an online income stream from home",
+    "You’re ready to learn, apply what you’re taught and stay consistent",
+  ],
   notFor: [
     "You’re looking for quick money / Ponzi schemes",
     "You’re not ready to put in the work",
     "You have a negative mindset about making money online",
   ],
+  finalHeading: "Your spot is waiting. We’re starting soon.",
   actionTakers: "This training is for action takers who are ready to learn, apply what they’re taught, and build a real online income.",
 
   disclaimer:

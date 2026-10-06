@@ -6,103 +6,153 @@ import { masterclass as c, urgency } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Free Faceless YouTube Training" };
 
-function Instructions() {
+const Arrow = () => <span aria-hidden>→</span>;
+
+function Tick({ className = "text-gold" }: { className?: string }) {
   return (
-    <p className="text-lg leading-relaxed text-soft">
-      Click the button below, enter your first name and correct email, then click{" "}
-      <strong className="text-body">“{c.form.submit}”</strong> to secure your spot and join the class.{" "}
-      <strong className="text-body">We’re starting soon.</strong>
-    </p>
+    <svg viewBox="0 0 20 20" className={`mt-1 size-5 shrink-0 fill-current ${className}`} aria-hidden>
+      <path d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.7-9.3-4.5 4.5a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 1 1 1.06-1.06l1.47 1.47 3.97-3.97a.75.75 0 1 1 1.06 1.06Z" />
+    </svg>
   );
 }
 
-function Cta({ label = c.joinCta }: { label?: string }) {
+function Cross() {
   return (
-    <div className="my-12 flex justify-center">
-      <RegisterButton className="btn-cta w-full sm:w-auto">{label}</RegisterButton>
-    </div>
+    <svg viewBox="0 0 20 20" className="mt-1 size-5 shrink-0 fill-cta/80" aria-hidden>
+      <path d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16ZM7.53 6.47a.75.75 0 0 0-1.06 1.06L8.94 10l-2.47 2.47a.75.75 0 1 0 1.06 1.06L10 11.06l2.47 2.47a.75.75 0 1 0 1.06-1.06L11.06 10l2.47-2.47a.75.75 0 0 0-1.06-1.06L10 8.94 7.53 6.47Z" />
+    </svg>
   );
 }
 
 export default function MasterclassPage() {
   return (
     <>
-      <main className="mx-auto max-w-5xl px-4 pb-32 pt-10 sm:px-6 sm:pt-20">
-        {/* Hero */}
-        <section className="bg-cocoa px-5 py-10 text-center sm:px-10 sm:py-16">
-          <p className="mx-auto inline-block rounded-full bg-gold px-6 py-3 font-serif text-base font-bold text-cocoa sm:px-9 sm:text-xl">{c.pill}</p>
-          <h1 className="mt-8 font-sans text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl sm:leading-[1.2]">
+      {/* Hero */}
+      <header className="hero-glow relative overflow-hidden text-white">
+        <div className="dots pointer-events-none absolute inset-0" />
+        <div className="relative mx-auto max-w-5xl px-4 pb-16 pt-6 text-center sm:px-6 sm:pb-24">
+          <p className="font-sans text-sm font-semibold tracking-tight text-white/80">Everything Melda</p>
+
+          <p className="mx-auto mt-10 inline-block rounded-full bg-gold px-5 py-2 font-sans text-sm font-bold text-cocoa shadow-lg shadow-gold/20 sm:text-base">
+            {c.pill}
+          </p>
+          <h1 className="mx-auto mt-7 max-w-4xl font-sans text-[2rem] font-extrabold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl">
             {c.headlineBefore}
             <span className="text-gold">{c.headlineHighlight}</span>
             {c.headlineAfter}
           </h1>
           <p className="mt-6 text-lg italic text-white/85 sm:text-xl">{c.subhead}</p>
-          <p className="mx-auto mt-8 max-w-4xl rounded border border-white/40 px-5 py-6 text-lg italic leading-relaxed text-white/85 sm:px-8 sm:text-xl">
-            {c.promise}
-          </p>
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/75">{c.promise}</p>
+
+          <ul className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-2.5">
+            {c.noNeed.map((n) => (
+              <li key={n} className="rounded-full border border-white/15 bg-white/5 px-4 py-2 font-sans text-sm font-medium text-white/90 backdrop-blur">
+                <span className="mr-1.5 text-gold">✕</span>{n}
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-10 flex flex-col items-center gap-4">
+            <RegisterButton className="btn-cta w-full sm:w-auto">{c.joinCta} <Arrow /></RegisterButton>
+            <p className="flex flex-wrap justify-center gap-x-4 gap-y-1 font-sans text-sm text-white/70">
+              {c.heroMeta.map((m) => <span key={m} className="inline-flex items-center gap-1.5"><span className="size-1.5 rounded-full bg-gold" />{m}</span>)}
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <main className="pb-28">
+        {/* Intro + proof */}
+        <section className="mx-auto grid max-w-5xl gap-10 px-4 py-16 sm:px-6 sm:py-24 md:grid-cols-[1.4fr_1fr] md:items-center">
+          <div className="space-y-5">
+            <p className="text-lg leading-relaxed sm:text-xl">{c.intro}</p>
+            <h2 className="pt-2 font-sans text-3xl font-extrabold tracking-tight text-cta">{c.yourTurn}</h2>
+            <p className="text-lg leading-relaxed text-soft">{c.curious}</p>
+          </div>
+          <div className="rounded-3xl bg-cocoa p-8 text-center text-white shadow-xl shadow-cocoa/20">
+            <p className="font-sans text-6xl font-extrabold tracking-tight text-gold">{c.proofStat}</p>
+            <p className="mt-3 text-lg leading-snug text-white/85">{c.proofLabel}</p>
+            <p className="mt-5 border-t border-white/10 pt-5 font-sans text-sm text-white/60">A proven, beginner-friendly system</p>
+          </div>
         </section>
 
-        <div className="mx-auto max-w-[57rem]">
-          <Cta />
-
-          <section className="space-y-6">
-            <p className="text-lg leading-relaxed sm:text-xl">{c.intro}</p>
-            <p className="text-lg font-bold leading-snug sm:text-xl">{c.proof}</p>
-            <h2 className="pt-2 text-2xl font-bold text-cta">{c.yourTurn}</h2>
-            <p className="text-lg leading-relaxed text-soft">{c.curious}</p>
-            <Instructions />
-          </section>
-
-          <Cta />
-
-          {/* What you'll learn */}
-          <section className="bg-cocoa-2 px-5 py-10 sm:px-10">
-            <h2 className="text-center font-sans text-2xl font-extrabold tracking-tight text-white sm:text-3xl">{c.learnHeading}</h2>
-            <ul className="mt-6 space-y-4">
-              {c.learn.map((item) => (
-                <li key={item} className="flex gap-3 text-lg leading-relaxed text-white/90">
-                  <span className="mt-0.5 text-gold" aria-hidden>√</span>
-                  {item}
+        {/* What you'll learn */}
+        <section className="bg-cocoa-2 py-16 text-white sm:py-24">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <p className="text-center font-sans text-xs font-bold uppercase tracking-[0.25em] text-gold">{c.learnEyebrow}</p>
+            <h2 className="mt-3 text-center font-sans text-3xl font-extrabold tracking-tight sm:text-4xl">{c.learnHeading}</h2>
+            <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {c.learn.map((item, i) => (
+                <li key={item} className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition-colors hover:border-gold/40">
+                  <span className="font-sans text-sm font-bold tabular-nums text-gold">{String(i + 1).padStart(2, "0")}</span>
+                  <p className="mt-3 text-lg leading-relaxed text-white/90">{item}</p>
                 </li>
               ))}
-            </ul>
-          </section>
+            </ol>
+            <div className="mt-12 flex justify-center">
+              <RegisterButton className="btn-cta w-full sm:w-auto">{c.registerCta} <Arrow /></RegisterButton>
+            </div>
+          </div>
+        </section>
 
-          <Cta />
+        {/* Tip */}
+        <section className="mx-auto max-w-3xl px-4 pt-16 sm:px-6 sm:pt-24">
+          <div className="flex gap-4 rounded-2xl border border-gold/50 bg-gold/10 p-6 sm:p-8">
+            <span className="text-2xl" aria-hidden>💡</span>
+            <p className="text-lg leading-relaxed">{c.tip}</p>
+          </div>
+        </section>
 
-          <p className="border-l-4 border-gold bg-cream-2 px-6 py-5 text-lg leading-relaxed">
-            <span aria-hidden>💡 </span>{c.tip}
-          </p>
+        {/* Fit */}
+        <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
+          <h2 className="text-center font-sans text-3xl font-extrabold tracking-tight sm:text-4xl">{c.notForHeading}</h2>
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
+            <div className="rounded-2xl border border-cocoa/10 bg-white p-6 shadow-sm sm:p-8">
+              <p className="font-sans text-lg font-bold">{c.forLead}</p>
+              <ul className="mt-5 space-y-4">
+                {c.forList.map((f) => <li key={f} className="flex gap-3 text-lg leading-relaxed"><Tick className="text-green-600" />{f}</li>)}
+              </ul>
+            </div>
+            <div className="rounded-2xl border border-cocoa/10 bg-cream-2 p-6 sm:p-8">
+              <p className="font-sans text-lg font-bold">{c.notForLead}</p>
+              <ul className="mt-5 space-y-4">
+                {c.notFor.map((n) => <li key={n} className="flex gap-3 text-lg leading-relaxed text-soft"><Cross />{n}</li>)}
+              </ul>
+            </div>
+          </div>
+          <p className="mx-auto mt-8 max-w-2xl text-center text-lg italic leading-relaxed">{c.actionTakers}</p>
+        </section>
 
-          <div className="mt-12"><Instructions /></div>
-
-          <Cta label={c.registerCta} />
-
-          {/* Not for everyone */}
-          <section>
-            <h2 className="text-2xl font-bold text-cta">{c.notForHeading}</h2>
-            <p className="mt-6 text-lg font-bold">{c.notForLead}</p>
-            <ul className="mt-4 list-disc space-y-3 pl-7 text-lg">
-              {c.notFor.map((n) => <li key={n}>{n}</li>)}
-            </ul>
-            <p className="mt-8 border border-dashed border-soft/50 bg-cream-2/70 px-6 py-6 text-center text-lg italic leading-relaxed">{c.actionTakers}</p>
-          </section>
-
-          <Cta />
-        </div>
+        {/* Final CTA */}
+        <section className="mx-auto max-w-5xl px-4 sm:px-6">
+          <div className="hero-glow relative overflow-hidden rounded-3xl px-6 py-14 text-center text-white sm:px-12">
+            <div className="dots pointer-events-none absolute inset-0" />
+            <div className="relative">
+              <h2 className="font-sans text-3xl font-extrabold tracking-tight sm:text-4xl">{c.finalHeading}</h2>
+              <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-white/80">
+                Click the button below, enter your first name and correct email, then click <strong className="text-white">“{c.form.submit}”</strong> to secure your spot and join the class.
+              </p>
+              <div className="mt-8 flex justify-center"><EvergreenCountdown minutes={urgency.countdownMinutes} /></div>
+              <div className="mt-8"><RegisterButton className="btn-cta w-full sm:w-auto">{c.joinCta} <Arrow /></RegisterButton></div>
+            </div>
+          </div>
+        </section>
 
         <Disclaimer />
       </main>
 
       {/* Sticky urgency bar */}
-      <div className="fixed inset-x-0 bottom-0 z-40 bg-cocoa-2 shadow-[0_-8px_30px_rgba(0,0,0,0.25)]">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-3 py-3 sm:px-6">
-          <div className="hidden font-sans leading-tight text-white sm:block">
-            <p className="font-bold">{urgency.label}</p>
-            <p className="text-sm text-white/80">{urgency.sublabel}</p>
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-cocoa-2/95 backdrop-blur">
+        <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-3 py-3 sm:px-6">
+          <div className="hidden items-center gap-2.5 font-sans leading-tight text-white sm:flex">
+            <span className="size-2 animate-pulse rounded-full bg-cta" />
+            <span>
+              <span className="block font-bold">{urgency.label}</span>
+              <span className="block text-sm text-white/70">{urgency.sublabel}</span>
+            </span>
           </div>
           <EvergreenCountdown minutes={urgency.countdownMinutes} />
-          <RegisterButton className="rounded-lg bg-cta px-3 py-2.5 font-sans text-xs font-bold uppercase leading-tight text-white transition-colors hover:bg-cta-dark sm:px-6 sm:py-3 sm:text-sm">
+          <RegisterButton className="rounded-xl bg-cta px-3 py-2.5 font-sans text-xs font-bold uppercase leading-tight text-white transition-colors hover:bg-cta-dark sm:px-5 sm:py-3 sm:text-sm">
             {urgency.cta}
           </RegisterButton>
         </div>
