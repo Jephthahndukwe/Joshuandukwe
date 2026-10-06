@@ -123,17 +123,52 @@ export default function MasterclassPage() {
           <p className="mx-auto mt-8 max-w-2xl text-center text-lg italic leading-relaxed">{c.actionTakers}</p>
         </section>
 
+        {/* Trainer */}
+        <section className="border-t border-night/5 bg-white py-16 sm:py-24">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <p className="font-sans text-sm font-bold uppercase tracking-[0.25em] text-emerald-600">{c.trainerEyebrow}</p>
+            <h2 className="mt-3 font-sans text-4xl font-extrabold tracking-tight sm:text-5xl">
+              {c.trainerFirstName} <span className="text-emerald-600">{c.trainerLastName}</span>
+            </h2>
+            <span className="mt-5 block h-1 w-24 rounded-full bg-gradient-to-r from-accent to-transparent" />
+
+            <div className="mt-10 rounded-3xl border border-night/10 bg-paper p-6 sm:p-10">
+              <div className="flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
+                {c.trainerImage ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={c.trainerImage} alt={`${c.trainerFirstName} ${c.trainerLastName}`} className="size-36 shrink-0 rounded-full object-cover ring-4 ring-accent/30" />
+                ) : (
+                  <span className="grid size-36 shrink-0 place-items-center rounded-full bg-gradient-to-br from-night to-navy font-sans text-4xl font-extrabold text-accent ring-4 ring-accent/30">
+                    {c.trainerFirstName[0]}{c.trainerLastName[0]}
+                  </span>
+                )}
+                <div>
+                  <p className="font-sans text-3xl font-bold tracking-tight">{c.trainerFirstName} {c.trainerLastName}</p>
+                  <p className="mt-2 font-sans text-sm font-bold uppercase tracking-[0.18em] text-emerald-600">{c.trainerRole}</p>
+                </div>
+              </div>
+              <div className="mt-8 space-y-2 text-lg leading-relaxed">
+                {c.trainerBio.map((p) => <p key={p}>{p}</p>)}
+              </div>
+            </div>
+
+            <RegisterButton className="btn-cta mt-8 w-full font-sans uppercase tracking-wide">{c.trainerCta}</RegisterButton>
+          </div>
+        </section>
+
         {/* Final CTA */}
-        <section className="mx-auto max-w-5xl px-4 sm:px-6">
+        <section className="mx-auto max-w-5xl px-4 pt-16 sm:px-6 sm:pt-24">
           <div className="hero-glow relative overflow-hidden rounded-3xl px-6 py-14 text-center text-white sm:px-12">
             <div className="dots pointer-events-none absolute inset-0" />
             <div className="relative">
-              <h2 className="font-sans text-3xl font-extrabold tracking-tight sm:text-4xl">{c.finalHeading}</h2>
-              <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-white/80">
-                Click the button below, enter your first name and correct email, then click <strong className="text-white">“{c.form.submit}”</strong> to secure your spot and join the class.
+              <h2 className="font-sans text-3xl font-extrabold tracking-tight sm:text-5xl">{c.finalHeadingBefore}<span className="text-accent">{c.finalHeadingAccent}</span></h2>
+              <span className="mx-auto mt-5 block h-1 w-24 rounded-full bg-gradient-to-r from-transparent via-accent to-transparent" />
+              <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/80">{c.finalBody}</p>
+              <p className="mx-auto mt-3 max-w-xl text-base leading-relaxed text-white/60">
+                Click the button below, enter your first name and correct email, then click <strong className="text-white">“{c.form.submit}”</strong> to secure your spot.
               </p>
               <div className="mt-8 flex justify-center"><EvergreenCountdown minutes={urgency.countdownMinutes} /></div>
-              <div className="mt-8"><RegisterButton className="btn-cta w-full sm:w-auto">{c.joinCta} <Arrow /></RegisterButton></div>
+              <div className="mt-8"><RegisterButton className="btn-cta w-full font-sans uppercase tracking-wide sm:w-auto">{c.trainerCta} <Arrow /></RegisterButton></div>
             </div>
           </div>
         </section>

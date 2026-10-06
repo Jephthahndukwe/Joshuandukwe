@@ -81,7 +81,23 @@ export const masterclass = {
     "You’re not ready to put in the work",
     "You have a negative mindset about making money online",
   ],
-  finalHeading: "Your spot is waiting. We’re starting soon.",
+  trainerEyebrow: "Meet your trainer",
+  trainerFirstName: "Joshua",
+  trainerLastName: "Ndukwe",
+  trainerRole: "Faceless YouTube creator & digital educator",
+  // Drop a square photo in /public (e.g. /joshua.jpg) and set the path here. Initials show until then.
+  trainerImage: "",
+  trainerBio: [
+    "I’m Joshua Ndukwe, a faceless YouTube creator and digital educator.",
+    "I’ve spent years learning how YouTube really works, from picking the right niche to creating videos with AI without ever showing my face.",
+    "I’ve also helped thousands of people get started with building an online income from home.",
+    "In this free training, I’ll break it all down simply: what faceless YouTube is, how it works, and how you can start.",
+  ],
+  trainerCta: "Join the free training",
+
+  finalHeadingBefore: "Ready to ",
+  finalHeadingAccent: "learn more?",
+  finalBody: "Join the free training to learn how everyday Nigerians are building faceless YouTube channels with AI, and how you can start too.",
   actionTakers: "This training is for action takers who are ready to learn, apply what they’re taught, and build a real online income.",
 
   disclaimer:
