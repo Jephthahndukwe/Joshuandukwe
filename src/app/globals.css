@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream: #fdf6ea;
-  --color-cream-2: #f4ede1;
-  --color-cocoa: #2b1a0e;
-  --color-cocoa-2: #24170c;
-  --color-gold: #fcc93a;
-  --color-cta: #e1251b;
-  --color-cta-dark: #c51d14;
-  --color-navy: #1f2b4d;
-  --color-body: #2a2420;
-  --color-soft: #6b625a;
+  --color-paper: #f5f7fb;
+  --color-paper-2: #e8eef7;
+  --color-night: #0b1324;
+  --color-night-2: #0e1a31;
+  --color-accent: #34d399;
+  --color-cta: #f97316;
+  --color-cta-dark: #ea580c;
+  --color-navy: #1d4ed8;
+  --color-body: #111827;
+  --color-soft: #5b6475;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-serif: var(--font-noto-serif), ui-serif, Georgia, serif;
 }
@@ -24,7 +24,7 @@ html {
 }
 
 body {
-  background: var(--color-cream);
+  background: var(--color-paper);
   color: var(--color-body);
   -webkit-font-smoothing: antialiased;
 }
@@ -35,8 +35,8 @@ body {
   justify-content: center;
   gap: 0.6rem;
   border-radius: 0.85rem;
-  background: linear-gradient(180deg, #ef3a2f, var(--color-cta));
-  box-shadow: 0 12px 30px -10px rgb(225 37 27 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.2);
+  background: linear-gradient(180deg, #fb8a3c, var(--color-cta));
+  box-shadow: 0 12px 30px -10px rgb(249 115 22 / 0.55), inset 0 1px 0 rgb(255 255 255 / 0.2);
   color: #fff;
   font-family: var(--font-serif);
   font-weight: 700;
@@ -58,7 +58,7 @@ body {
 .input {
   width: 100%;
   border-radius: 0.5rem;
-  border: 1px solid #d9cfbf;
+  border: 1px solid #cfd8e6;
   background: #fff;
   padding: 0.9rem 1rem;
   font-size: 1rem;
@@ -68,7 +68,7 @@ body {
 }
 .input:focus {
   border-color: var(--color-cta);
-  box-shadow: 0 0 0 3px rgb(225 37 27 / 0.15);
+  box-shadow: 0 0 0 3px rgb(249 115 22 / 0.18);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -77,9 +77,9 @@ body {
 
 .hero-glow {
   background:
-    radial-gradient(60% 60% at 50% 0%, rgb(252 201 58 / 0.16), transparent 70%),
-    radial-gradient(40% 50% at 100% 100%, rgb(225 37 27 / 0.18), transparent 70%),
-    var(--color-cocoa);
+    radial-gradient(60% 60% at 50% 0%, rgb(52 211 153 / 0.16), transparent 70%),
+    radial-gradient(40% 50% at 100% 100%, rgb(29 78 216 / 0.35), transparent 70%),
+    var(--color-night);
 }
 
 .dots {

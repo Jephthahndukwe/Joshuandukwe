@@ -29,7 +29,7 @@ export function AddToCalendar({ startMs, roomUrl }: { startMs: number; roomUrl: 
     location: roomUrl,
   })}`;
 
-  const btn = "rounded-lg border border-cocoa/20 bg-white px-4 py-2.5 font-sans text-sm font-semibold text-cocoa transition-colors hover:bg-cream-2";
+  const btn = "rounded-lg border border-night/20 bg-white px-4 py-2.5 font-sans text-sm font-semibold text-night transition-colors hover:bg-paper-2";
 
   function downloadIcs() {
     const esc = (s: string) => s.replace(/[\\,;]/g, (c) => `\\${c}`).replace(/\n/g, "\\n");

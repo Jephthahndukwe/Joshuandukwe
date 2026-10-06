@@ -56,9 +56,9 @@ export function RegisterModal() {
       ref={dialogRef}
       aria-labelledby="register-title"
       onClick={(e) => e.target === dialogRef.current && dialogRef.current?.close()}
-      className="m-auto w-[calc(100%-2rem)] max-w-md rounded-xl bg-cream p-0 shadow-2xl backdrop:bg-black/70"
+      className="m-auto w-[calc(100%-2rem)] max-w-md rounded-xl bg-paper p-0 shadow-2xl backdrop:bg-black/70"
     >
-      <div className="relative bg-cocoa px-6 pb-5 pt-6 text-center text-white">
+      <div className="relative bg-night px-6 pb-5 pt-6 text-center text-white">
         <button type="button" onClick={() => dialogRef.current?.close()} aria-label="Close" className="absolute right-3 top-2 text-2xl leading-none text-white/70 hover:text-white">×</button>
         <h2 id="register-title" className="font-sans text-2xl font-extrabold tracking-tight">{f.heading}</h2>
         <p className="mt-1 text-sm italic text-white/80">{f.sub}</p>
