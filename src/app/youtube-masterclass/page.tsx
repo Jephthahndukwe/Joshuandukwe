@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Disclaimer } from "@/components/Chrome";
 import { EvergreenCountdown } from "@/components/Countdown";
 import { RegisterButton, RegisterModal } from "@/components/Register";
@@ -137,8 +138,7 @@ export default function MasterclassPage() {
             <div className="mt-10 rounded-3xl border border-night/10 bg-paper p-6 sm:p-10">
               <div className="flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
                 {c.trainerImage ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={c.trainerImage} alt={`${c.trainerFirstName} ${c.trainerLastName}`} className="size-36 shrink-0 rounded-full object-cover ring-4 ring-accent/30" />
+                  <Image src={c.trainerImage} alt={`${c.trainerFirstName} ${c.trainerLastName}`} width={288} height={288} className="size-36 shrink-0 rounded-full object-cover ring-4 ring-accent/30" />
                 ) : (
                   <span className="grid size-36 shrink-0 place-items-center rounded-full bg-gradient-to-br from-night to-navy font-sans text-4xl font-extrabold text-accent ring-4 ring-accent/30">
                     {c.trainerFirstName[0]}{c.trainerLastName[0]}

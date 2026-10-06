@@ -87,7 +87,7 @@ export const masterclass = {
   trainerLastName: "Ndukwe",
   trainerRole: "Faceless YouTube creator & digital educator",
   // Drop a square photo in /public (e.g. /joshua.jpg) and set the path here. Initials show until then.
-  trainerImage: "",
+  trainerImage: "/joshua.jpg",
   trainerBio: [
     "I’m Joshua Ndukwe, a faceless YouTube creator and digital educator.",
     "I’ve spent years learning how YouTube really works, from picking the right niche to creating videos with AI without ever showing my face.",
