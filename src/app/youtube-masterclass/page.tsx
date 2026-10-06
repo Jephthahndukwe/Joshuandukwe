@@ -36,10 +36,7 @@ export default function MasterclassPage() {
             {c.topBadge}
           </p>
 
-          <p className="mx-auto mt-8 inline-block rounded-full bg-accent px-5 py-2 font-sans text-sm font-bold text-night shadow-lg shadow-accent/20 sm:text-base">
-            {c.pill}
-          </p>
-          <h1 className="mx-auto mt-7 max-w-4xl font-sans text-[2rem] font-extrabold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="mx-auto mt-8 max-w-4xl font-sans text-[2rem] font-extrabold leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl">
             {c.headlineBefore}
             <span className="text-accent">{c.headlineHighlight}</span>
             {c.headlineAfter}
