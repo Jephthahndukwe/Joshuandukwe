@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Disclaimer } from "@/components/Chrome";
 import { OfferCountdown } from "@/components/Countdown";
-import { brand, offer as o } from "@/lib/content";
+import { offer as o } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: `Enroll in the ${o.productName}`,
@@ -12,9 +12,19 @@ export const metadata: Metadata = {
 const naira = (n: number) => `₦${n.toLocaleString("en-NG")}`;
 const p = o.payment;
 const hasBank = Boolean(p.accountNumber && p.bankName && p.accountName);
-const whatsappUrl = p.whatsappNumber
-  ? `https://wa.me/${p.whatsappNumber}?text=${encodeURIComponent(`Hi ${brand.host.split(" ")[0]}, I just paid for the ${o.productName}. Here is my proof of payment.`)}`
-  : "";
+
+function EnquiryNumbers() {
+  return (
+    <>
+      {p.enquiry.map((e, i) => (
+        <span key={e.number}>
+          {i > 0 && " or "}
+          <a href={`https://wa.me/${e.number}`} target="_blank" rel="noopener noreferrer" className="whitespace-nowrap font-semibold text-body underline underline-offset-4 hover:text-cta-dark">{e.display}</a>
+        </span>
+      ))}
+    </>
+  );
+}
 
 function Tick() {
   return (
@@ -44,19 +54,19 @@ function PaymentBox({ id, showPrice = false }: { id?: string; showPrice?: boolea
         </p>
       )}
 
-      {whatsappUrl && (
+      {p.proofUrl && (
         <>
           <p className="mt-5 leading-relaxed text-soft">
             After payment, please click the button below and you will be redirected to my WhatsApp DM.
-            {p.whatsappDisplay && <> If for any reason it doesn’t work, send me a direct message on <strong className="text-body">{p.whatsappDisplay}</strong>.</>}
+            {p.enquiry.length > 0 && <> If for any reason it doesn’t work, send me a direct message on <EnquiryNumbers />.</>}
           </p>
-          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-cta mt-5 w-full sm:w-auto">Click here to send proof of payment</a>
+          <a href={p.proofUrl} target="_blank" rel="noopener noreferrer" className="btn-cta mt-5 w-full sm:w-auto">Click here to send proof of payment</a>
         </>
       )}
 
       {p.selarUrl && (
         <>
-          {whatsappUrl && <p className="my-3 font-sans text-sm font-semibold uppercase tracking-widest text-soft">or</p>}
+          {p.proofUrl && <p className="my-3 font-sans text-sm font-semibold uppercase tracking-widest text-soft">or</p>}
           <a href={p.selarUrl} target="_blank" rel="noopener noreferrer" className="inline-flex w-full items-center justify-center rounded-[0.85rem] border-2 border-cta px-7 py-3.5 font-serif font-bold text-cta-dark transition-colors hover:bg-cta/10 sm:w-auto">
             Pay instantly with Selar
           </a>
@@ -64,7 +74,7 @@ function PaymentBox({ id, showPrice = false }: { id?: string; showPrice?: boolea
         </>
       )}
 
-      {p.whatsappDisplay && <p className="mt-3 text-sm text-soft">Or make an inquiry via WhatsApp: {p.whatsappDisplay}</p>}
+      {p.enquiry.length > 0 && <p className="mt-3 text-sm leading-relaxed text-soft">Or make an inquiry via WhatsApp: <EnquiryNumbers /></p>}
     </section>
   );
 }

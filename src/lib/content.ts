@@ -158,14 +158,17 @@ export const offer = {
    * the page shows "payment details coming soon" instead of an account.
    */
   payment: {
-    accountNumber: "",
-    bankName: "",
-    accountName: "",
-    // WhatsApp number in international format without "+", e.g. "2348012345678".
-    whatsappNumber: "",
-    // Number as people should read it on the page, e.g. "0801 234 5678".
-    whatsappDisplay: "",
-    selarUrl: "",
+    accountNumber: "0250131069",
+    bankName: "EcoBank",
+    accountName: "Joshua Ndukwe",
+    // "Send proof of payment" button.
+    proofUrl: "https://wa.link/ktpgg3",
+    selarUrl: "https://selar.com/p/44u1474541?affiliate=x318z87s31",
+    // WhatsApp enquiry numbers: international format without "+", plus how they read on the page.
+    enquiry: [
+      { number: "2348085622700", display: "+234 808 562 2700" },
+      { number: "2348131970294", display: "+234 813 197 0294" },
+    ],
   },
 
   valueHeadingBefore: "Here Is What You Will Get When You Enroll In The ",
