@@ -175,14 +175,14 @@ export const offer = {
   valueHeadingAfter: " Today",
   // Values in naira; the total is added up automatically.
   valueStack: [
-    { item: "Complete 7-Module Faceless YouTube Course", value: 250_000 },
-    { item: "Step-by-Step YouTube Monetization Roadmap", value: 50_000 },
-    { item: "Complete AI Workflow System (ChatGPT, Recraft, ElevenLabs & CapCut)", value: 60_000 },
+    { item: "7 Complete Modules", value: 250_000 },
+    { item: "20+ Profitable Faceless YouTube Niches", value: 50_000 },
+    { item: "Step-by-Step Roadmap", value: 70_000 },
+    { item: "Complete AI Workflow", value: 65_000 },
     { item: "Done-for-You Prompt Library", value: 45_000 },
-    { item: "Ready-to-Use Templates & Resources", value: 40_000 },
-    { item: "20+ Carefully Researched Faceless YouTube Niches", value: 50_000 },
-    { item: "Thumbnail & Title Formula That Gets Clicks", value: 35_000 },
-    { item: "Lifetime Access + Future Course Updates", value: 50_000 },
+    { item: "Clickable Thumbnails & Title Formula", value: 40_000 },
+    { item: "Practical Templates", value: 35_000 },
+    { item: "Future Course Updates", value: 49_500 },
   ],
 
   fastActionHeading: "Fast action bonus when you make payment right now",

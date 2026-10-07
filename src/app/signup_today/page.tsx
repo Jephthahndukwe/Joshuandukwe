@@ -12,10 +12,10 @@ const naira = (n: number) => `₦${n.toLocaleString("en-NG")}`;
 const p = o.payment;
 const hasBank = Boolean(p.accountNumber && p.bankName && p.accountName);
 
-function EnquiryNumbers() {
+function EnquiryNumbers({ first = false }: { first?: boolean }) {
   return (
     <>
-      {p.enquiry.map((e, i) => (
+      {(first ? p.enquiry.slice(0, 1) : p.enquiry).map((e, i) => (
         <span key={e.number}>
           {i > 0 && " or "}
           <a href={`https://wa.me/${e.number}`} target="_blank" rel="noopener noreferrer" className="whitespace-nowrap font-semibold text-body underline underline-offset-4 hover:text-cta-dark">{e.display}</a>
@@ -57,7 +57,7 @@ function PaymentBox({ id, showPrice = false }: { id?: string; showPrice?: boolea
         <>
           <p className="mt-5 leading-relaxed text-soft">
             After payment, please click the button below and you will be redirected to my WhatsApp DM.
-            {p.enquiry.length > 0 && <> If for any reason it doesn’t work, send me a direct message on <EnquiryNumbers />.</>}
+            {p.enquiry.length > 0 && <> If for any reason it doesn’t work, send me a direct message on <EnquiryNumbers first />.</>}
           </p>
           <a href={p.proofUrl} target="_blank" rel="noopener noreferrer" className="btn-cta mt-5 w-full sm:w-auto">Click here to send proof of payment</a>
         </>
