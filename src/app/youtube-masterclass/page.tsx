@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Disclaimer } from "@/components/Chrome";
 import { EvergreenCountdown } from "@/components/Countdown";
 import { RegisterButton, RegisterModal } from "@/components/Register";
 import { masterclass as c, urgency } from "@/lib/content";
@@ -170,6 +171,8 @@ export default function MasterclassPage() {
             </div>
           </div>
         </section>
+
+        <Disclaimer />
       </main>
 
       {/* Sticky urgency bar */}

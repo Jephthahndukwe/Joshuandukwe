@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Disclaimer } from "@/components/Chrome";
 import { confirm as c } from "@/lib/content";
 import { eventFromSearchParams } from "@/lib/webinar";
 
@@ -18,7 +19,7 @@ export default async function ConfirmPage({ searchParams }: { searchParams: Prom
   return (
     <main className="hero-glow relative min-h-dvh overflow-hidden text-white">
       <div className="dots pointer-events-none absolute inset-0" />
-      <div className="relative mx-auto max-w-3xl px-5 pb-14 pt-12 text-center sm:px-6 sm:pt-16">
+      <div className="relative mx-auto max-w-3xl px-5 pb-6 pt-12 text-center sm:px-6 sm:pt-16">
         <p className="font-sans text-base font-bold italic text-accent sm:text-lg">{c.secured}</p>
 
         <h1 className="mt-6 font-sans text-[1.65rem] font-extrabold leading-[1.2] tracking-tight sm:text-4xl">
@@ -57,6 +58,10 @@ export default async function ConfirmPage({ searchParams }: { searchParams: Prom
           <p>{c.emailNote}</p>
           <p>{c.updatesNote}</p>
         </div>
+      </div>
+
+      <div className="relative [&_footer]:text-white/50">
+        <Disclaimer />
       </div>
     </main>
   );

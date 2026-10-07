@@ -100,6 +100,9 @@ export const masterclass = {
   finalBody: "Join the free training to learn how everyday Nigerians are building faceless YouTube channels with AI, and how you can start too.",
   actionTakers: "This training is for action takers who are ready to learn, apply what they’re taught, and build a real online income.",
 
+  disclaimer:
+    "This site is not part of the Facebook website or Facebook Inc. Additionally, this site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.",
+
   form: {
     heading: "Reserve Your Free Spot",
     sub: "Enter your first name and correct email to join the live training.",

@@ -178,6 +178,7 @@ export default function SignupTodayPage() {
           </div>
         </section>
       </main>
+
     </>
   );
 }
