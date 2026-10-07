@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Disclaimer } from "@/components/Chrome";
 import { OfferCountdown } from "@/components/Countdown";
 import { offer as o } from "@/lib/content";
 
@@ -179,8 +178,6 @@ export default function SignupTodayPage() {
           </div>
         </section>
       </main>
-
-      <Disclaimer />
     </>
   );
 }
