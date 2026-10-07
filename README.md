@@ -6,6 +6,7 @@ Two-step webinar funnel built with Next.js (App Router), TypeScript and Tailwind
 | --- | --- |
 | `/youtube-masterclass` | Registration page inspired by the original masterclass page: hero, learning list, not-for-everyone section, popup opt-in form and sticky "Live Training Starting Soon" countdown bar |
 | `/confirm` | Success page: "Here Is How To Join" box showing the reserved session time (from WebinarJam's `wj_*` params) and a Join the Training button to the attendee's live room link. Set it as WebinarJam's thank-you page URL |
+| `/signup_today` | Paid offer page for the YouTube Automation Blueprint: 72-hour countdown, price, value stack, bonuses and three payment boxes. Fill in Joshua's bank, WhatsApp and Selar details in `offer.payment` in `src/lib/content.ts`; empty fields show "payment details coming soon" |
 | `/api/register` | Validates the lead, registers it with WebinarJam, then redirects to `/confirm` with WebinarJam-format params |
 | `/` | Redirects to `/youtube-masterclass` |
 

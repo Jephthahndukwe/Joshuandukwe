@@ -131,3 +131,78 @@ export const confirm = {
   emailNote: "You should have received an email about this training. Kindly check your inbox and mark the mail as important.",
   updatesNote: "I’ll be sending you updates about this training, plus insights on other smart ways people are building income online, from time to time.",
 };
+
+/** /signup_today: the paid offer page shown after the webinar. */
+export const offer = {
+  productName: "YouTube Automation Blueprint",
+  countdownMinutes: 72 * 60,
+  headlineBefore: "Learn How To Build A Faceless YouTube Channel That Can Generate ",
+  headlineHighlight: "$1,000 to $5,000+",
+  headlineAfter: " Monthly From Home",
+  subhead: "No experience whatsoever needed, and this works even for complete beginners.",
+  intro: "This proven system you are about to learn has helped me build my faceless YouTube journey, and now it is your turn.",
+  enrollBefore: "When you enroll in the ",
+  enrollAfter: ", you will gain access to the knowledge, strategies, resources and tools you need to start and build your own faceless YouTube channel.",
+  instructionsHeading: "To get the special offer, make sure you follow the instructions",
+  instructions: [
+    "Use the available discount (act fast, this offer is limited)",
+    "Send your payment to the available account details",
+    "Confirm your payment by clicking the button below",
+  ],
+  slots: 5,
+  regularPrice: "₦120,000",
+  price: "₦60,000",
+
+  /**
+   * Joshua's payment details. Leave a field empty until it is confirmed:
+   * the page shows "payment details coming soon" instead of an account.
+   */
+  payment: {
+    accountNumber: "",
+    bankName: "",
+    accountName: "",
+    // WhatsApp number in international format without "+", e.g. "2348012345678".
+    whatsappNumber: "",
+    // Number as people should read it on the page, e.g. "0801 234 5678".
+    whatsappDisplay: "",
+    selarUrl: "",
+  },
+
+  valueHeadingBefore: "Here Is What You Will Get When You Enroll In The ",
+  valueHeadingAfter: " Today",
+  // Values in naira; the total is added up automatically.
+  valueStack: [
+    { item: "Complete 7-Module Faceless YouTube Course", value: 250_000 },
+    { item: "Step-by-Step YouTube Monetization Roadmap", value: 50_000 },
+    { item: "Complete AI Workflow System (ChatGPT, Recraft, ElevenLabs & CapCut)", value: 60_000 },
+    { item: "Done-for-You Prompt Library", value: 45_000 },
+    { item: "Ready-to-Use Templates & Resources", value: 40_000 },
+    { item: "20+ Carefully Researched Faceless YouTube Niches", value: 50_000 },
+    { item: "Thumbnail & Title Formula That Gets Clicks", value: 35_000 },
+    { item: "Lifetime Access + Future Course Updates", value: 50_000 },
+  ],
+
+  fastActionHeading: "Fast action bonus when you make payment right now",
+  fastAction: ["2 Weeks Direct Access to Coach Joshua", "30-Minute Strategy Call", "1 Month Channel Monitoring & Feedback"],
+  fastActionValue: "Total bonus value: Priceless",
+
+  moreBonusesHeading: "More bonuses if you are paying now",
+  moreBonuses: [
+    "We would be teaching you how to build and grow your faceless YouTube channel from scratch.",
+    "We would be giving you step-by-step guidance on how to create content using AI tools.",
+    "We would be revealing how to find profitable faceless YouTube niches.",
+    "We would be showing you how to create videos without showing your face.",
+    "We would be showing you how to optimize your videos for YouTube and work towards monetization.",
+  ],
+
+  closingLine: "Take this opportunity to learn how to build a faceless YouTube channel and start working towards creating income from a global audience.",
+  finalEyebrow: "It’s up to you",
+  finalHeading: "What Would You Do?",
+  finalQuestions: [
+    "Do you want to take this opportunity to gain access to a practical system for building a faceless YouTube channel and creating an additional source of income?",
+    "Would you rather close this page, miss the current ₦60,000 offer, and continue doing things the same way?",
+  ],
+  finalBall: "The ball is in your court.",
+  finalAction: "👉 Take action now!",
+  finalCta: "Click here",
+};
