@@ -3,9 +3,9 @@ import Image from "next/image";
 import { Disclaimer } from "@/components/Chrome";
 import { NextSessionCountdown, NextSessionTime } from "@/components/Countdown";
 import { RegisterButton, RegisterModal } from "@/components/Register";
-import { masterclass as c, urgency, webinarjam } from "@/lib/content";
+import { masterclass as c, siteTitle, urgency, webinarjam } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Free Faceless YouTube Training" };
+export const metadata: Metadata = { title: { absolute: siteTitle } };
 
 const Arrow = () => <span aria-hidden>→</span>;
 

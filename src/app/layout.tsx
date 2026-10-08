@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Noto_Serif } from "next/font/google";
-import { brand, masterclass } from "@/lib/content";
+import { brand, masterclass, siteTitle } from "@/lib/content";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -8,14 +8,15 @@ const serif = Noto_Serif({ subsets: ["latin"], weight: ["400", "700"], style: ["
 
 export const metadata: Metadata = {
   metadataBase: new URL(brand.siteUrl),
-  title: { default: `Free Faceless YouTube Training | ${brand.name}`, template: `%s | ${brand.name}` },
+  title: { default: siteTitle, template: `%s | ${brand.name}` },
   description: masterclass.subhead,
   openGraph: {
-    title: "How Everyday Nigerians Are Quietly Building Faceless YouTube Channels",
+    title: siteTitle,
     description: masterclass.subhead,
     type: "website",
     siteName: brand.name,
   },
+  twitter: { card: "summary", title: siteTitle, description: masterclass.subhead },
   icons: { icon: "/favicon.svg" },
 };
 

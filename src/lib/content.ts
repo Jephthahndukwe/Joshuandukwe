@@ -110,6 +110,9 @@ export const masterclass = {
     "This site is not part of the Facebook website or Facebook Inc. Additionally, this site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.",
 };
 
+/** Site title, built from the main heading so the tab and link previews always match it. */
+export const siteTitle = `${masterclass.headlineBefore}${masterclass.headlineHighlight}${masterclass.headlineAfter}`;
+
 export const confirm = {
   secured: "You’ve Successfully Secured Your Seat for the Live Webinar",
   headlineBefore: "In This Training, I’ll Be Revealing ",

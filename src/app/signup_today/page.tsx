@@ -5,6 +5,8 @@ import { offer as o } from "@/lib/content";
 export const metadata: Metadata = {
   title: `Enroll in the ${o.productName}`,
   description: o.subhead,
+  openGraph: { title: `Enroll in the ${o.productName}`, description: o.subhead },
+  twitter: { title: `Enroll in the ${o.productName}`, description: o.subhead },
   robots: { index: false, follow: false },
 };
 
