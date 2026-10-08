@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Disclaimer } from "@/components/Chrome";
 import { confirm as c } from "@/lib/content";
 import { eventFromSearchParams } from "@/lib/webinar";
+import { ReservedSession } from "@/components/Countdown";
 
 export const metadata: Metadata = { title: "Seat Confirmed", robots: { index: false, follow: false } };
 
@@ -38,11 +39,7 @@ export default async function ConfirmPage({ searchParams }: { searchParams: Prom
         {/* How to join */}
         <section className="mt-6 rounded-2xl border-2 border-dashed border-cta bg-paper px-5 py-8 text-body sm:px-10">
           <h2 className="font-sans text-2xl font-extrabold tracking-tight sm:text-3xl">{c.joinHeading}</h2>
-          <p className="mt-5 font-sans text-base text-soft">
-            {c.reservedLabel}{" "}
-            <strong className="text-body">{event.time}, {event.date}</strong>
-          </p>
-          <p className="mt-1 font-sans text-xs text-soft">{event.tzLabel}</p>
+          <ReservedSession {...event} />
 
           <p className="mt-4 font-sans text-base font-semibold">{c.joinPrompt}</p>
           <div className="mt-3 flex justify-center gap-4" aria-hidden>

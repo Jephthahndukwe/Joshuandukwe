@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Disclaimer } from "@/components/Chrome";
-import { EvergreenCountdown } from "@/components/Countdown";
+import { NextSessionCountdown, NextSessionTime } from "@/components/Countdown";
 import { RegisterButton, RegisterModal } from "@/components/Register";
 import { masterclass as c, urgency, webinarjam } from "@/lib/content";
 
@@ -166,7 +166,8 @@ export default function MasterclassPage() {
               <p className="mx-auto mt-3 max-w-xl text-base leading-relaxed text-white/60">
                 Click the button below, enter your first name and correct email, then click <strong className="text-white">“{webinarjam.formButtonText}”</strong> to secure your spot.
               </p>
-              <div className="mt-8 flex justify-center"><EvergreenCountdown minutes={urgency.countdownMinutes} /></div>
+              <div className="mt-8 flex justify-center"><NextSessionCountdown /></div>
+              <p className="mt-3 font-sans text-sm text-white/70"><NextSessionTime prefix="Next session starts at" /></p>
               <div className="mt-8"><RegisterButton className="btn-cta w-full font-sans uppercase tracking-wide sm:w-auto">{c.trainerCta} <Arrow /></RegisterButton></div>
             </div>
           </div>
@@ -182,10 +183,10 @@ export default function MasterclassPage() {
             <span className="size-2 animate-pulse rounded-full bg-cta" />
             <span>
               <span className="block font-bold">{urgency.label}</span>
-              <span className="block text-sm text-white/70">{urgency.sublabel}</span>
+              <span className="block text-sm text-white/70"><NextSessionTime /></span>
             </span>
           </div>
-          <EvergreenCountdown minutes={urgency.countdownMinutes} />
+          <div className="text-white"><NextSessionCountdown /></div>
           <RegisterButton className="rounded-xl bg-cta px-3 py-2.5 font-sans text-xs font-bold uppercase leading-tight text-white transition-colors hover:bg-cta-dark sm:px-5 sm:py-3 sm:text-sm">
             {urgency.cta}
           </RegisterButton>

@@ -14,22 +14,18 @@ export const brand = {
 };
 
 /**
- * Webinar schedule used when WebinarJam is not returning a date.
- * Weekly recurring session, expressed in the host's local timezone.
+ * Mirrors the WebinarJam schedule: Just-In-Time sessions every :00, :15, :30 and :45
+ * in each viewer's own time zone.
  */
 export const schedule = {
-  timeZone: "Europe/London",
-  weekday: 2, // 0 = Sunday ... 2 = Tuesday
-  hour: 16,
-  minute: 30,
+  intervalMinutes: 15,
+  // How long the page keeps saying "We're live now" after a session starts.
   durationMinutes: 90,
 };
 
 /** "Live Training Starting Soon" bar: per-visitor countdown that restarts when it hits zero. */
 export const urgency = {
   label: "Live Training",
-  sublabel: "Starting Soon",
-  countdownMinutes: 1,
   cta: "Click here to register now!!!",
 };
 

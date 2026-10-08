@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { confirm, schedule } from "@/lib/content";
+import { nextSessionStart } from "@/lib/schedule";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
@@ -39,17 +41,78 @@ function Box({ children }: { children: React.ReactNode }) {
   return <span className="grid h-10 min-w-10 place-items-center rounded bg-navy px-2 font-sans text-lg font-bold tabular-nums text-white">{children}</span>;
 }
 
-/** Compact HH:MM:SS countdown for the sticky bar and CTA blocks. */
-export function EvergreenCountdown({ minutes }: { minutes: number }) {
-  const t = useEvergreen(minutes, "urgency_deadline");
-  const vals = t ? [pad(t.hours), pad(t.minutes), pad(t.seconds)] : ["--", "--", "--"];
+/** Current time, ticking every second. Null until mounted so server and client markup match. */
+function useNow() {
+  const [now, setNow] = useState<number | null>(null);
+  useEffect(() => {
+    setNow(Date.now());
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  return now;
+}
 
+function Clock({ ms }: { ms: number | null }) {
+  const s = ms === null ? 0 : Math.max(0, Math.floor(ms / 1000));
+  const vals = ms === null ? ["--", "--", "--"] : [pad(Math.floor(s / 3600)), pad(Math.floor((s % 3600) / 60)), pad(s % 60)];
   return (
     <div className="flex items-center gap-1.5" role="timer" aria-label="Time until the live training starts">
-      <Box>{vals[0]}</Box><span className="font-bold text-white">:</span>
-      <Box>{vals[1]}</Box><span className="font-bold text-white">:</span>
+      <Box>{vals[0]}</Box><span className="font-bold text-current">:</span>
+      <Box>{vals[1]}</Box><span className="font-bold text-current">:</span>
       <Box>{vals[2]}</Box>
     </div>
+  );
+}
+
+// Viewer's own time zone, 12-hour clock to match WebinarJam ("9:15 PM").
+const timeFmt = (ms: number) =>
+  new Intl.DateTimeFormat("en-GB", { hour: "numeric", minute: "2-digit", hour12: true }).format(new Date(ms)).toUpperCase();
+const dateFmt = (ms: number) =>
+  new Intl.DateTimeFormat("en-GB", { weekday: "long", day: "2-digit", month: "long", year: "numeric" }).format(new Date(ms));
+
+/** Counts down to the next Just-In-Time session, then rolls on to the one after. */
+export function NextSessionCountdown() {
+  const now = useNow();
+  return <Clock ms={now === null ? null : nextSessionStart(now) - now} />;
+}
+
+/** "Starts at 9:15 PM", in the viewer's own time zone. */
+export function NextSessionTime({ prefix = "Starts at" }: { prefix?: string }) {
+  const now = useNow();
+  return <>{now === null ? "Starting soon" : `${prefix} ${timeFmt(nextSessionStart(now))}`}</>;
+}
+
+/**
+ * Success page: the reserved slot and a countdown to it. Uses the session WebinarJam passed;
+ * without one, falls back to the next Just-In-Time session in the viewer's time zone.
+ */
+export function ReservedSession({ startMs, date, time, tzLabel }: { startMs: number | null; date: string; time: string; tzLabel: string }) {
+  const now = useNow();
+  const [fallback, setFallback] = useState<number | null>(null);
+  useEffect(() => setFallback(nextSessionStart()), []);
+  const target = startMs ?? fallback;
+
+  // WebinarJam's own labels when present; otherwise format in the viewer's time zone once mounted.
+  let slot = time && date ? `${time}, ${date}` : "";
+  if (!slot && target !== null && now !== null) slot = `${timeFmt(target)}, ${dateFmt(target)}`;
+  const left = now === null || target === null ? null : target - now;
+
+  return (
+    <>
+      <p className="mt-5 font-sans text-base text-soft">
+        {confirm.reservedLabel} <strong className="text-body">{slot || "…"}</strong>
+      </p>
+      {tzLabel && <p className="mt-1 font-sans text-xs text-soft">{tzLabel}</p>}
+      <div className="mt-4 flex justify-center text-body">
+        {left !== null && left <= -schedule.durationMinutes * 60_000 ? (
+          <p className="font-sans font-semibold text-soft">This session has ended</p>
+        ) : left !== null && left <= 0 ? (
+          <p className="font-sans font-bold text-cta-dark">● We’re live now. Click the button below to join.</p>
+        ) : (
+          <Clock ms={left} />
+        )}
+      </div>
+    </>
   );
 }
 
