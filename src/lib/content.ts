@@ -40,9 +40,10 @@ export const webinarjam = {
 
 export const masterclass = {
   topBadge: "Free live online training",
-  headlineBefore: "The Simple Way Regular Nigerians Are Turning Faceless YouTube Channels Into ",
-  headlineHighlight: "$1,000 to $5,000+",
-  headlineAfter: " a Month",
+  // Same wording as the success page heading.
+  headlineBefore: "How Everyday Nigerians Are ",
+  headlineHighlight: "Getting Paid in Dollars",
+  headlineAfter: " With Faceless YouTube Channels, Without Ever Showing Their Face",
   subhead: "You don’t have to be on camera, or even be a YouTuber, to earn from YouTube.",
   promise:
     "I’ll walk you through my beginner-friendly process for picking a winning niche, making videos with AI, growing your channel and getting it ready to earn, starting from zero.",
