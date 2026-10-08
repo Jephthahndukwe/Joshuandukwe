@@ -48,8 +48,8 @@ export const masterclass = {
     "I’ll walk you through my beginner-friendly process for picking a winning niche, making videos with AI, growing your channel and getting it ready to earn, starting from zero.",
   noNeed: ["Your face stays off camera", "Zero followers needed", "No YouTube experience required", "No tech skills needed"],
   heroMeta: ["Free to join", "Live with Joshua", "Made for beginners"],
-  proofStat: "15 mins",
-  proofLabel: "is the longest you’ll wait: a new live session starts every 15 minutes",
+  proofStat: "5,516+",
+  proofLabel: "people I’ve helped start building an online income",
 
   joinCta: "Save My Free Seat Now",
   registerCta: "Yes, I Want In!",
@@ -95,7 +95,7 @@ export const masterclass = {
   trainerBio: [
     "I’m Joshua Ndukwe, a faceless YouTube creator and digital educator.",
     "I learned YouTube the hard way, through trial, error and a lot of testing, until I found a process that works: choosing the right niche and creating videos with AI, no camera needed.",
-    "Now I teach that same process to beginners who want to build income online without showing their face.",
+    "Since then, I’ve helped thousands of people start building an income online, and now I teach that same process to beginners who want to earn without showing their face.",
     "In this free session, I’ll keep it simple: what faceless YouTube is, how it works and the first steps to start yours.",
   ],
   trainerCta: "Save my free seat",

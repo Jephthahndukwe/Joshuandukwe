@@ -72,7 +72,7 @@ export default function MasterclassPage() {
           <div className="rounded-3xl bg-night p-7 text-center text-white shadow-xl shadow-night/20">
             <p className="font-sans text-5xl font-extrabold tracking-tight text-accent">{c.proofStat}</p>
             <p className="mt-3 text-base leading-snug text-white/85">{c.proofLabel}</p>
-            <p className="mt-5 border-t border-white/10 pt-5 font-sans text-sm text-white/60">Sessions run all day, every day</p>
+            <p className="mt-5 border-t border-white/10 pt-5 font-sans text-sm text-white/60">A proven, beginner-friendly process</p>
           </div>
         </section>
 
