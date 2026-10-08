@@ -112,13 +112,6 @@ export const masterclass = {
   disclaimer:
     "This site is not part of the Facebook website or Facebook Inc. Additionally, this site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.",
 
-  form: {
-    heading: "Reserve Your Free Spot",
-    sub: "Enter your first name and correct email to join the live training.",
-    submit: "Join the Live Training Now",
-    loading: "Loading the registration form…",
-    privacy: "100% free. Your details are safe with us.",
-  },
 };
 
 export const confirm = {

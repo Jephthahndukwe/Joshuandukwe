@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { masterclass, webinarjam as wj } from "@/lib/content";
+import { webinarjam as wj } from "@/lib/content";
 
 const OPEN_EVENT = "open-register";
 
@@ -30,7 +30,6 @@ export function RegisterModal() {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [state, setState] = useState<"idle" | "loading" | "ready" | "error">("idle");
-  const f = masterclass.form;
 
   useEffect(() => {
     const open = () => {
@@ -53,25 +52,27 @@ export function RegisterModal() {
   return (
     <dialog
       ref={dialogRef}
-      aria-labelledby="register-title"
+      aria-label="Register for the live training"
       onClick={(e) => e.target === dialogRef.current && dialogRef.current?.close()}
-      className="m-auto w-[calc(100%-2rem)] max-w-md rounded-xl bg-paper p-0 shadow-2xl backdrop:bg-black/70"
+      className="m-auto w-[calc(100%-2rem)] max-w-md overflow-visible rounded-xl bg-white p-0 shadow-2xl backdrop:bg-black/70"
     >
-      <div className="relative bg-night px-6 pb-5 pt-6 text-center text-white">
-        <button type="button" onClick={() => dialogRef.current?.close()} aria-label="Close" className="absolute right-3 top-2 text-2xl leading-none text-white/70 hover:text-white">×</button>
-        <h2 id="register-title" className="font-sans text-2xl font-extrabold tracking-tight">{f.heading}</h2>
-        <p className="mt-1 text-sm italic text-white/80">{f.sub}</p>
-      </div>
-      <div className="p-4 sm:p-6">
-        {/* WebinarJam renders its form inside this wrapper. */}
+      <button
+        type="button"
+        onClick={() => dialogRef.current?.close()}
+        aria-label="Close"
+        className="absolute -right-2 -top-3 z-10 grid size-8 place-items-center rounded-full bg-night text-lg leading-none text-white shadow-lg hover:bg-night-2"
+      >
+        ×
+      </button>
+      <div className="p-3 sm:p-4">
+        {/* WebinarJam renders its registration form inside this wrapper. */}
         <div ref={wrapperRef} className="wj-embed-wrapper min-h-48" data-webinar-hash={wj.webinarHash} />
-        {state === "loading" && <p className="py-2 text-center text-sm text-soft">{f.loading}</p>}
+        {state === "loading" && <p className="pb-2 text-center text-sm text-soft">Loading…</p>}
         {state === "error" && (
-          <p role="alert" className="py-2 text-center text-sm font-semibold text-cta-dark">
+          <p role="alert" className="pb-2 text-center text-sm font-semibold text-cta-dark">
             The form couldn’t load. Check your connection and try again.
           </p>
         )}
-        <p className="mt-3 text-center text-xs text-soft">{f.privacy}</p>
       </div>
     </dialog>
   );

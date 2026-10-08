@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Disclaimer } from "@/components/Chrome";
 import { EvergreenCountdown } from "@/components/Countdown";
 import { RegisterButton, RegisterModal } from "@/components/Register";
-import { masterclass as c, urgency } from "@/lib/content";
+import { masterclass as c, urgency, webinarjam } from "@/lib/content";
 
 export const metadata: Metadata = { title: "Free Faceless YouTube Training" };
 
@@ -164,7 +164,7 @@ export default function MasterclassPage() {
               <span className="mx-auto mt-5 block h-1 w-24 rounded-full bg-gradient-to-r from-transparent via-accent to-transparent" />
               <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/80">{c.finalBody}</p>
               <p className="mx-auto mt-3 max-w-xl text-base leading-relaxed text-white/60">
-                Click the button below, enter your first name and correct email, then click <strong className="text-white">“{c.form.submit}”</strong> to secure your spot.
+                Click the button below, enter your first name and correct email, then click <strong className="text-white">“{webinarjam.formButtonText}”</strong> to secure your spot.
               </p>
               <div className="mt-8 flex justify-center"><EvergreenCountdown minutes={urgency.countdownMinutes} /></div>
               <div className="mt-8"><RegisterButton className="btn-cta w-full font-sans uppercase tracking-wide sm:w-auto">{c.trainerCta} <Arrow /></RegisterButton></div>
