@@ -33,6 +33,15 @@ export const urgency = {
   cta: "Click here to register now!!!",
 };
 
+/** WebinarJam registration form embedded in the signup popup. */
+export const webinarjam = {
+  webinarHash: "pkz936i4",
+  // Styling passed to WebinarJam's embed: button text and colours to match the site.
+  formButtonText: "Join the Live Training Now",
+  formAccentColor: "#f97316",
+  formBgColor: "#ffffff",
+};
+
 export const masterclass = {
   topBadge: "Free live online training",
   headlineBefore: "How Everyday Nigerians Are Quietly Building Faceless YouTube Channels That Can Generate Over ",
@@ -107,7 +116,7 @@ export const masterclass = {
     heading: "Reserve Your Free Spot",
     sub: "Enter your first name and correct email to join the live training.",
     submit: "Join the Live Training Now",
-    loading: "Securing your spot…",
+    loading: "Loading the registration form…",
     privacy: "100% free. Your details are safe with us.",
   },
 };

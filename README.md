@@ -4,10 +4,9 @@ Two-step webinar funnel built with Next.js (App Router), TypeScript and Tailwind
 
 | Route | Purpose |
 | --- | --- |
-| `/youtube-masterclass` | Registration page inspired by the original masterclass page: hero, learning list, not-for-everyone section, popup opt-in form and sticky "Live Training Starting Soon" countdown bar |
+| `/youtube-masterclass` | Registration page inspired by the original masterclass page: hero, learning list, not-for-everyone section, popup with the WebinarJam registration form and sticky "Live Training Starting Soon" countdown bar |
 | `/confirm` | Success page: "Here Is How To Join" box showing the reserved session time (from WebinarJam's `wj_*` params) and a Join the Training button to the attendee's live room link. Set it as WebinarJam's thank-you page URL |
 | `/signup_today` | Paid offer page for the YouTube Automation Blueprint: 72-hour countdown, price, value stack, bonuses and three payment boxes. Fill in Joshua's bank, WhatsApp and Selar details in `offer.payment` in `src/lib/content.ts`; empty fields show "payment details coming soon" |
-| `/api/register` | Validates the lead, registers it with WebinarJam, then redirects to `/confirm` with WebinarJam-format params |
 | `/` | Redirects to `/youtube-masterclass` |
 
 ## Editing copy
@@ -17,15 +16,8 @@ The sticky bar countdown is per visitor and restarts when it hits zero (`urgency
 
 ## WebinarJam setup
 
-Copy `.env.example` to `.env.local` and fill in:
-
-- `WEBINARJAM_API_KEY` and `WEBINARJAM_WEBINAR_ID`: registrations go straight into WebinarJam and each lead gets their unique live room link.
-- `WEBINARJAM_SCHEDULE`: which schedule to register into (default `0`).
-- `NEXT_PUBLIC_FALLBACK_ROOM_URL`: room link used if the API is not configured or fails, so a lead is never shown an error.
-
-Without API keys the funnel still works end to end using the weekly schedule in `content.ts` (Tuesday 4:30 PM London).
-
-Using WebinarJam's own registration form instead? Set its thank-you page to `https://<domain>/confirm` with "pass registrant data" enabled. The page reads the same `wj_*` params.
+- The signup popup embeds WebinarJam's registration form for webinar `pkz936i4` (see `webinarjam` in `src/lib/content.ts`).
+- In WebinarJam, set the registration thank-you page to `https://joshuandukwe.com/confirm` with registrant data passed along, so the success page shows each person's session time.
 
 ## Develop and deploy
 

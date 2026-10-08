@@ -1,8 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { masterclass } from "@/lib/content";
+import { masterclass, webinarjam as wj } from "@/lib/content";
 
 const OPEN_EVENT = "open-register";
 
@@ -15,41 +14,41 @@ export function RegisterButton({ children, className = "btn-cta" }: { children: 
   );
 }
 
+function embedSrc() {
+  const params = new URLSearchParams({
+    formButtonText: wj.formButtonText,
+    formAccentColor: wj.formAccentColor,
+    formAccentOpacity: "0.95",
+    formBgColor: wj.formBgColor,
+    formBgOpacity: "1",
+  });
+  return `https://event.webinarjam.com/register/${wj.webinarHash}/embed-form?${params}`;
+}
+
+/** Popup holding the WebinarJam registration form. The embed script loads the first time the popup opens. */
 export function RegisterModal() {
-  const router = useRouter();
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
-  const [error, setError] = useState("");
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [state, setState] = useState<"idle" | "loading" | "ready" | "error">("idle");
   const f = masterclass.form;
 
   useEffect(() => {
     const open = () => {
       dialogRef.current?.showModal();
-      dialogRef.current?.querySelector<HTMLInputElement>("input[name=firstName]")?.focus();
+      const wrapper = wrapperRef.current;
+      if (!wrapper || wrapper.dataset.loaded) return;
+      wrapper.dataset.loaded = "true";
+      setState("loading");
+      const script = document.createElement("script");
+      script.src = embedSrc();
+      script.async = true;
+      script.onload = () => setState("ready");
+      script.onerror = () => setState("error");
+      wrapper.appendChild(script);
     };
     window.addEventListener(OPEN_EVENT, open);
     return () => window.removeEventListener(OPEN_EVENT, open);
   }, []);
-
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    setStatus("loading");
-    setError("");
-    try {
-      const res = await fetch("/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ firstName: fd.get("firstName"), email: fd.get("email"), company: fd.get("company") }),
-      });
-      const data = (await res.json()) as { redirect?: string; error?: string };
-      if (!res.ok || !data.redirect) throw new Error(data.error || "Something went wrong. Please try again.");
-      router.push(data.redirect);
-    } catch (err) {
-      setStatus("error");
-      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
-    }
-  }
 
   return (
     <dialog
@@ -63,18 +62,17 @@ export function RegisterModal() {
         <h2 id="register-title" className="font-sans text-2xl font-extrabold tracking-tight">{f.heading}</h2>
         <p className="mt-1 text-sm italic text-white/80">{f.sub}</p>
       </div>
-      <form onSubmit={onSubmit} className="flex flex-col gap-3 p-6">
-        <label className="sr-only" htmlFor="reg-first">First name</label>
-        <input id="reg-first" name="firstName" required autoComplete="given-name" placeholder="Your first name" className="input" />
-        <label className="sr-only" htmlFor="reg-email">Email</label>
-        <input id="reg-email" name="email" type="email" required autoComplete="email" placeholder="Your correct email address" className="input" />
-        <input name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
-        <button type="submit" disabled={status === "loading"} className="btn-cta mt-1 w-full">
-          {status === "loading" ? f.loading : f.submit}
-        </button>
-        {status === "error" && <p role="alert" className="text-sm text-cta">{error}</p>}
-        <p className="text-center text-xs text-soft">{f.privacy}</p>
-      </form>
+      <div className="p-4 sm:p-6">
+        {/* WebinarJam renders its form inside this wrapper. */}
+        <div ref={wrapperRef} className="wj-embed-wrapper min-h-48" data-webinar-hash={wj.webinarHash} />
+        {state === "loading" && <p className="py-2 text-center text-sm text-soft">{f.loading}</p>}
+        {state === "error" && (
+          <p role="alert" className="py-2 text-center text-sm font-semibold text-cta-dark">
+            The form couldn’t load. Check your connection and try again.
+          </p>
+        )}
+        <p className="mt-3 text-center text-xs text-soft">{f.privacy}</p>
+      </div>
     </dialog>
   );
 }
