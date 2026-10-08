@@ -36,8 +36,8 @@ function Tick() {
 function PaymentBox({ id, showPrice = false }: { id?: string; showPrice?: boolean }) {
   return (
     <section id={id} className="scroll-mt-6 rounded-2xl border-2 border-accent bg-white px-5 py-8 text-center shadow-xl shadow-accent/10 sm:px-10">
-      <h2 className="font-sans text-xl font-extrabold uppercase tracking-tight sm:text-2xl">Make a direct transfer</h2>
-      <p className="mt-3 text-soft">Kindly make a direct transfer to this account below to enroll for the</p>
+      <h2 className="font-sans text-xl font-extrabold uppercase tracking-tight sm:text-2xl">Pay by bank transfer</h2>
+      <p className="mt-3 text-soft">Send your payment to the account below to enroll in the</p>
       <p className="mt-2 font-sans font-extrabold uppercase tracking-wide text-cta-dark">{o.productName}</p>
       {showPrice && <p className="mt-2 font-sans text-xl font-extrabold text-cta-dark">{o.price}</p>}
 
@@ -56,10 +56,10 @@ function PaymentBox({ id, showPrice = false }: { id?: string; showPrice?: boolea
       {p.proofUrl && (
         <>
           <p className="mt-5 leading-relaxed text-soft">
-            After payment, please click the button below and you will be redirected to my WhatsApp DM.
-            {p.enquiry.length > 0 && <> If for any reason it doesn’t work, send me a direct message on <EnquiryNumbers first />.</>}
+            Once you’ve paid, tap the button below to send your receipt to me on WhatsApp.
+            {p.enquiry.length > 0 && <> If the button doesn’t open, message me directly on <EnquiryNumbers first />.</>}
           </p>
-          <a href={p.proofUrl} target="_blank" rel="noopener noreferrer" className="btn-cta mt-5 w-full sm:w-auto">Click here to send proof of payment</a>
+          <a href={p.proofUrl} target="_blank" rel="noopener noreferrer" className="btn-cta mt-5 w-full sm:w-auto">Send my payment receipt</a>
         </>
       )}
 
@@ -67,13 +67,13 @@ function PaymentBox({ id, showPrice = false }: { id?: string; showPrice?: boolea
         <>
           {p.proofUrl && <p className="my-3 font-sans text-sm font-semibold uppercase tracking-widest text-soft">or</p>}
           <a href={p.selarUrl} target="_blank" rel="noopener noreferrer" className="inline-flex w-full items-center justify-center rounded-[0.85rem] border-2 border-cta px-7 py-3.5 font-serif font-bold text-cta-dark transition-colors hover:bg-cta/10 sm:w-auto">
-            Pay instantly with Selar
+            Pay online with Selar
           </a>
-          <p className="mt-3 text-sm text-soft">After paying with Selar, please send me a screenshot of your payment.</p>
+          <p className="mt-3 text-sm text-soft">Paid on Selar? Send me a screenshot of your receipt.</p>
         </>
       )}
 
-      {p.enquiry.length > 0 && <p className="mt-3 text-sm leading-relaxed text-soft">Or make an inquiry via WhatsApp: <EnquiryNumbers /></p>}
+      {p.enquiry.length > 0 && <p className="mt-3 text-sm leading-relaxed text-soft">Questions? Chat with me on WhatsApp: <EnquiryNumbers /></p>}
     </section>
   );
 }
@@ -109,13 +109,13 @@ export default function SignupTodayPage() {
         {/* Scarcity + price */}
         <section className="text-center">
           <p className="font-sans text-6xl font-extrabold text-cta">{o.slots}</p>
-          <p className="mt-1 font-sans text-xl font-bold">Only {o.slots} slots available</p>
+          <p className="mt-1 font-sans text-xl font-bold">Just {o.slots} spots left at this price</p>
           <div className="mt-8 rounded-2xl border-l-4 border-accent bg-night px-6 py-6 text-left leading-relaxed text-white/90">
-            <p><strong className="text-accent">Congratulations!</strong> Your special {o.price} offer is still available, but there are only {o.slots} slots available, so make your payment now to secure your spot.</p>
-            <p className="mt-4">Follow the instructions below to make payment for the <strong className="uppercase text-accent">{o.productName}</strong> for {o.price} from now.</p>
+            <p><strong className="text-accent">Good news!</strong> The {o.price} special price is still open, but only {o.slots} spots remain. Pay now to lock yours in.</p>
+            <p className="mt-4">Follow the steps below to pay for the <strong className="uppercase text-accent">{o.productName}</strong> at just {o.price} today.</p>
           </div>
-          <p className="mt-8 font-sans text-lg text-soft line-through decoration-2">Regular price: {o.regularPrice}</p>
-          <p className="font-sans text-4xl font-extrabold text-cta-dark">Today: {o.price}</p>
+          <p className="mt-8 font-sans text-lg text-soft line-through decoration-2">Normal price: {o.regularPrice}</p>
+          <p className="font-sans text-4xl font-extrabold text-cta-dark">Today only: {o.price}</p>
         </section>
 
         <PaymentBox id="pay" />
@@ -141,7 +141,7 @@ export default function SignupTodayPage() {
 
         {/* Fast action bonus */}
         <section className="text-center">
-          <p className="font-sans font-extrabold uppercase tracking-wide">And that’s not all…</p>
+          <p className="font-sans font-extrabold uppercase tracking-wide">But wait, there’s more…</p>
           <div className="mt-5 rounded-2xl border-2 border-dashed border-accent bg-accent/10 px-5 py-8">
             <h2 className="font-sans text-lg font-extrabold uppercase tracking-tight text-cta-dark">🎁 {o.fastActionHeading}</h2>
             <ul className="mx-auto mt-5 inline-flex flex-col gap-3 text-left">

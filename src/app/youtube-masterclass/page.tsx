@@ -72,7 +72,7 @@ export default function MasterclassPage() {
           <div className="rounded-3xl bg-night p-7 text-center text-white shadow-xl shadow-night/20">
             <p className="font-sans text-5xl font-extrabold tracking-tight text-accent">{c.proofStat}</p>
             <p className="mt-3 text-base leading-snug text-white/85">{c.proofLabel}</p>
-            <p className="mt-5 border-t border-white/10 pt-5 font-sans text-sm text-white/60">A proven, beginner-friendly system</p>
+            <p className="mt-5 border-t border-white/10 pt-5 font-sans text-sm text-white/60">Sessions run all day, every day</p>
           </div>
         </section>
 
@@ -164,7 +164,7 @@ export default function MasterclassPage() {
               <span className="mx-auto mt-5 block h-1 w-24 rounded-full bg-gradient-to-r from-transparent via-accent to-transparent" />
               <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/80">{c.finalBody}</p>
               <p className="mx-auto mt-3 max-w-xl text-base leading-relaxed text-white/60">
-                Click the button below, enter your first name and correct email, then click <strong className="text-white">“{webinarjam.formButtonText}”</strong> to secure your spot.
+                Tap the button below, fill in your first name and a working email, then hit <strong className="text-white">“{webinarjam.formButtonText}”</strong> to lock in your seat.
               </p>
               <div className="mt-8 flex justify-center"><NextSessionCountdown /></div>
               <p className="mt-3 font-sans text-sm text-white/70"><NextSessionTime prefix="Next session starts at" /></p>
