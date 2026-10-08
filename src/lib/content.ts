@@ -110,23 +110,23 @@ export const masterclass = {
 };
 
 export const confirm = {
-  secured: "You’re in! Your seat for the live training is confirmed",
-  headlineBefore: "On This Live Session, I’ll Show You ",
-  headlineHighlight: "“How Ordinary Nigerians Are Earning in Dollars",
-  headlineMiddle: " From Faceless YouTube Channels, ",
-  headlineEmphasis: "No Camera, No Face Required”",
-  sub: "Plus how you can start yours using just your phone or laptop, with ",
-  subStrong: "zero experience.",
-  scarcity: "Seats are limited",
-  joinHeading: "How To Join The Training",
-  reservedLabel: "Your seat is booked for:",
-  joinPrompt: "When it’s time, tap the button below to enter the training room",
-  joinButton: "Enter the training room",
+  secured: "You’ve Successfully Secured Your Seat for the Live Webinar",
+  headlineBefore: "In This Training, I’ll Be Revealing ",
+  headlineHighlight: "“How Everyday Nigerians Are Getting Paid in Dollars",
+  headlineMiddle: " With Faceless YouTube Channels, ",
+  headlineEmphasis: "Without Ever Showing Their Face”",
+  sub: "And exactly how you can start doing the same, right from your smartphone or laptop, with ",
+  subStrong: "no prior experience needed.",
+  scarcity: "Limited seats available",
+  joinHeading: "Here Is How To Join",
+  reservedLabel: "Your training slot is reserved at:",
+  joinPrompt: "Click the button below to enter the training once it is time",
+  joinButton: "Join the training",
   // Where the Join the Training button on the success page goes.
   joinUrl: "https://event.webinarjam.com/k50n24/go/live/pkz936i4fgs6sq",
-  noRedirect: "Remember to tap the button above at your booked time. This page won’t take you there automatically.",
-  emailNote: "A confirmation email is on its way to your inbox. Open it and mark it as important so you don’t miss the reminders.",
-  updatesNote: "From time to time, I’ll also share tips and updates on smart ways to build income online.",
+  noRedirect: "Be sure to click the button above at the scheduled time: this page will NOT automatically redirect.",
+  emailNote: "You should have received an email about this training. Kindly check your inbox and mark the mail as important.",
+  updatesNote: "I’ll be sending you updates about this training, plus insights on other smart ways people are building income online, from time to time.",
 };
 
 /** /signup_today: the paid offer page shown after the webinar. */
