@@ -3,7 +3,7 @@ import { Disclaimer } from "@/components/Chrome";
 import { confirm as c } from "@/lib/content";
 import { eventFromSearchParams } from "@/lib/webinar";
 import { ReservedSession } from "@/components/Countdown";
-import { SnapSignUp } from "@/components/SnapPixel";
+import { SnapPixel, SnapSignUp } from "@/components/SnapPixel";
 
 export const metadata: Metadata = { title: "Seat Confirmed", robots: { index: false, follow: false } };
 
@@ -61,6 +61,8 @@ export default async function ConfirmPage({ searchParams }: { searchParams: Prom
       <div className="relative [&_footer]:text-white/50">
         <Disclaimer />
       </div>
+      {/* Pixel first so it is set up before the sign-up event fires. */}
+      <SnapPixel />
       <SnapSignUp />
     </main>
   );

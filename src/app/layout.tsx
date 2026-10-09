@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Noto_Serif } from "next/font/google";
-import { SnapPixel } from "@/components/SnapPixel";
 import { brand, masterclass, siteTitle } from "@/lib/content";
 import "./globals.css";
 
@@ -27,8 +26,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${serif.variable}`}>
       <body className="min-h-dvh font-serif">
-        {/* Before the page so the pixel is set up before any page-level events fire. */}
-        <SnapPixel />
         {children}
       </body>
     </html>

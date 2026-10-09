@@ -1,7 +1,7 @@
 import Script from "next/script";
 import { snapPixelId } from "@/lib/content";
 
-/** Snap Pixel base code (from Snapchat Ads Manager). Loads on every page and tracks PAGE_VIEW. */
+/** Snap Pixel base code (from Snapchat Ads Manager). Tracks PAGE_VIEW on the pages that render it. */
 export function SnapPixel() {
   return (
     <Script id="snap-pixel" strategy="afterInteractive">
