@@ -13,6 +13,9 @@ export const brand = {
   supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL ?? "",
 };
 
+/** Snapchat Ads Manager pixel. */
+export const snapPixelId = "d61ba337-b023-432f-9810-53fd599f7d9c";
+
 /**
  * Mirrors the WebinarJam schedule: Just-In-Time sessions every :00, :15, :30 and :45
  * in each viewer's own time zone.
