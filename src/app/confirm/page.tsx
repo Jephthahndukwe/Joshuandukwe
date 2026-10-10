@@ -61,8 +61,8 @@ export default async function ConfirmPage({ searchParams }: { searchParams: Prom
       <div className="relative [&_footer]:text-white/50">
         <Disclaimer />
       </div>
-      {/* Pixel first so it is set up before the sign-up event fires. */}
-      <SnapPixel />
+      {/* PAGE_VIEW and SIGN_UP are sent by SnapSignUp, with the hashed email when WebinarJam passes it. */}
+      <SnapPixel pageView={false} />
       <SnapSignUp />
     </main>
   );
