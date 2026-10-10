@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Noto_Serif } from "next/font/google";
+import { SnapPixelHead } from "@/components/SnapPixel";
 import { brand, masterclass, siteTitle } from "@/lib/content";
 import "./globals.css";
 
@@ -25,6 +26,11 @@ export const viewport: Viewport = { themeColor: "#0b1324" };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${serif.variable}`}>
+      <head>
+        {/* Snap Pixel Code */}
+        <SnapPixelHead />
+        {/* End Snap Pixel Code */}
+      </head>
       <body className="min-h-dvh font-serif">
         {children}
       </body>

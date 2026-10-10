@@ -1,6 +1,5 @@
 "use client";
 
-import Script from "next/script";
 import { useEffect, useRef } from "react";
 import { snapPixelId } from "@/lib/content";
 
@@ -11,22 +10,28 @@ declare global {
   }
 }
 
+/** Pages that must not load the pixel. */
+const EXCLUDED = ["/signup_today"];
+/** Pages that send their own PAGE_VIEW (with extra data) instead of the default one. */
+const OWN_PAGE_VIEW = ["/confirm"];
+
 /**
- * Snap Pixel base code (from Snapchat Ads Manager).
- * Tracks PAGE_VIEW unless the page sends its own (see SnapSignUp).
+ * Snap Pixel base code (from Snapchat Ads Manager), rendered inside <head> on every page
+ * except EXCLUDED. Tracks PAGE_VIEW, except on OWN_PAGE_VIEW pages (see SnapSignUp).
  */
-export function SnapPixel({ pageView = true }: { pageView?: boolean }) {
-  return (
-    <Script id="snap-pixel" strategy="afterInteractive">
-      {`(function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function()
+export function SnapPixelHead() {
+  const code = `(function(){var p=location.pathname;
+if(${JSON.stringify(EXCLUDED)}.some(function(x){return p.indexOf(x)===0}))return;
+(function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function()
 {a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};
 a.queue=[];var s='script';var r=t.createElement(s);r.async=!0;
 r.src=n;var u=t.getElementsByTagName(s)[0];
 u.parentNode.insertBefore(r,u);})(window,document,
 'https://sc-static.net/scevent.min.js');
-snaptr('init', '${snapPixelId}', {});${pageView ? "\nsnaptr('track', 'PAGE_VIEW');" : ""}`}
-    </Script>
-  );
+snaptr('init', '${snapPixelId}', {});
+if(!${JSON.stringify(OWN_PAGE_VIEW)}.some(function(x){return p.indexOf(x)===0}))snaptr('track', 'PAGE_VIEW');
+})();`;
+  return <script id="snap-pixel" dangerouslySetInnerHTML={{ __html: code }} />;
 }
 
 async function sha256(value: string) {

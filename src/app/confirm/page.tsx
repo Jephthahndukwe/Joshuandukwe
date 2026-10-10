@@ -3,7 +3,7 @@ import { Disclaimer } from "@/components/Chrome";
 import { confirm as c } from "@/lib/content";
 import { eventFromSearchParams } from "@/lib/webinar";
 import { ReservedSession } from "@/components/Countdown";
-import { SnapPixel, SnapSignUp } from "@/components/SnapPixel";
+import { SnapSignUp } from "@/components/SnapPixel";
 
 export const metadata: Metadata = { title: "Seat Confirmed", robots: { index: false, follow: false } };
 
@@ -61,8 +61,7 @@ export default async function ConfirmPage({ searchParams }: { searchParams: Prom
       <div className="relative [&_footer]:text-white/50">
         <Disclaimer />
       </div>
-      {/* PAGE_VIEW and SIGN_UP are sent by SnapSignUp, with the hashed email when WebinarJam passes it. */}
-      <SnapPixel pageView={false} />
+      {/* PAGE_VIEW and SIGN_UP, with the hashed email when WebinarJam passes it. Base pixel is in the layout <head>. */}
       <SnapSignUp />
     </main>
   );

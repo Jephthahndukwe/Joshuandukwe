@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Disclaimer } from "@/components/Chrome";
 import { NextSessionCountdown, NextSessionTime } from "@/components/Countdown";
 import { RegisterButton, RegisterModal } from "@/components/Register";
-import { SnapPixel } from "@/components/SnapPixel";
 import { masterclass as c, siteTitle, urgency, webinarjam } from "@/lib/content";
 
 export const metadata: Metadata = { title: { absolute: siteTitle } };
@@ -195,7 +194,6 @@ export default function MasterclassPage() {
       </div>
 
       <RegisterModal />
-      <SnapPixel />
     </>
   );
 }
