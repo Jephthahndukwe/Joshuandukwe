@@ -130,7 +130,7 @@ export const confirm = {
   joinPrompt: "Click the button below to enter the training once it is time",
   joinButton: "Join the training",
   // Where the Join the Training button on the success page goes.
-  joinUrl: "https://event.webinarjam.com/k50n24/go/live/pkz936i4fgs6sq",
+  joinUrl: "https://chat.whatsapp.com/Joxy8o6byCs43eRCJTv4qn?s=cl&p=a&mlu=4&ilr=4&iam=2",
   noRedirect: "Be sure to click the button above at the scheduled time: this page will NOT automatically redirect.",
   emailNote: "You should have received an email about this training. Kindly check your inbox and mark the mail as important.",
   updatesNote: "I’ll be sending you updates about this training, plus insights on other smart ways people are building income online, from time to time.",
